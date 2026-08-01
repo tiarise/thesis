@@ -9,7 +9,7 @@ The goal of the game is to get to the end of the main questline, while gathering
 
 The game is a cross-platform ( Linux and Windows ) x64 application. Supports multiple resolutions and graphics settings.
 The game was built with the Godot(v2.1) engine. The main gameplay systems were written with GD-Script.
-Additionally, I used my own C++ framework for handling the character attributes and items. You can find project on my GitHub also!
+Additionally, I used my own C++ framework for handling the character attributes and items. You can find the project on my [GitHub](https://github.com/tiarise/reikon-framework) also!
 Since the two languages could not communicate directly, I've created a custom C++ module, that I compiled into the engine. This 
 created a "bridge" between the two systems.
 

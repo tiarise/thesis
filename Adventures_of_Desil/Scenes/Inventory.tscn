@@ -1,0 +1,113 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://Scripts/Inventory.gd" type="Script" id=1]
+
+[node name="SceneRoot" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="Inventory" type="WindowDialog" parent="."]
+
+visibility/visible = false
+visibility/light_mask = 0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+popup/exclusive = false
+window/title = "Inventory"
+
+[node name="TabContainer" type="TabContainer" parent="Inventory"]
+
+visibility/light_mask = 0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 8.0
+margin/bottom = 36.0
+tab_align = 1
+tabs_visible = true
+
+[node name="Equipment" type="Tree" parent="Inventory/TabContainer" groups=[ "UIFontType" ]]
+
+visibility/light_mask = 0
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 4.0
+margin/top = 32.0
+margin/right = 4.0
+margin/bottom = 4.0
+
+[node name="Bag" type="Tree" parent="Inventory/TabContainer" groups=[ "UIFontType" ]]
+
+visibility/visible = false
+visibility/light_mask = 0
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 4.0
+margin/top = 32.0
+margin/right = 4.0
+margin/bottom = 4.0
+
+[node name="Label" type="Label" parent="Inventory" groups=[ "UIFontType" ]]
+
+visibility/light_mask = 0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 189.0
+margin/bottom = 14.0
+text = "Doubleclick on item for equipping/dequipping it."
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="Inventory"]
+
+visibility/visible = false
+visibility/light_mask = 0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 124.0
+margin/bottom = 58.0
+popup/exclusive = false
+window/title = "Please Confirm..."
+dialog/hide_on_ok = true
+
+[node name="WarningTimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = true
+autostart = false
+
+[connection signal="item_activated" from="Inventory/TabContainer/Equipment" to="." method="_on_Equipment_item_activated"]
+
+[connection signal="item_activated" from="Inventory/TabContainer/Bag" to="." method="_on_Bag_item_activated"]
+
+[connection signal="timeout" from="WarningTimer" to="." method="_on_WarningTimer_timeout"]
+
+

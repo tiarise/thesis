@@ -1,0 +1,43 @@
+[ID-1]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Hello son, sniffing around?"
+Leads=[ "ID-2"]
+
+[ID-2]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Hey Dad, I'm just looking around."
+Answer="We are getting ready, but the caravan hasn't arrived just yet."
+Leads=[ "ID-3","ID-4" ]
+
+[ID-3]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Curious! I thought they would be here by now."
+Answer="Yes, they should have been."
+Leads=[]
+
+[ID-4]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Where is Toliam?"
+Answer="He is still at the northern watchtower."
+Leads=[ "ID-END" ]
+RemovesQuery=["Curious! I thought they would be here by now."]
+
+[ID-END]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Okay Dad, I will be around."
+Answer="Keep safe! Oh, and here's something I wanted to give you. If you are strong enyought you will be able to use it."

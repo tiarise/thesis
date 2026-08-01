@@ -1,0 +1,127 @@
+[ID-1]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Heyo Sir! Whatcha doin? Better not steal my prize winner raspberries! My precious raspberries!"
+Leads=[ "ID-13"]
+
+
+[ID-13]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Why would anyone want your raspberries?"
+Answer="Are you deaf? They are prize winner champion raspberries!"
+Leads=[ "ID-2" ]
+
+
+[ID-2]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="You look at least as suspicious as the others!"
+Leads=[ "ID-3"]
+
+
+[ID-3]
+
+Conditional=true
+Reaction=true
+Battle=false
+Condition_Type="QuestIsActive"
+Condition_Name="I. Strange reports"
+Condition_Success_Leads=["ID-5"]
+Condition_Fail_Leads=["ID-4"]
+
+[ID-4]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Hey, pssst... Do not trust Inly... She is suspicious too."
+Leads=[ "ID-END" ]
+
+
+[ID-5]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="You know what! I decided! It wasn't you..."
+Leads=[ "ID-6" ]
+
+
+[ID-6]
+
+Conditional=true
+Reaction=true
+Battle=false
+Condition_Type="QuestIsActive"
+Condition_Name="II. Eyewitness"
+Condition_Success_Leads=["ID-END"]
+Condition_Fail_Leads=["ID-7"]
+
+[ID-7]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="You must feel relieved now!"
+Leads=[ "ID-8" ]
+
+
+[ID-8]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Yea very much so... Have you experienced anything strange in these days?"
+Answer="Have I? Yestoday night someone stole one of my crates while I was harvesting. My precious!"
+Leads=[ "ID-9" ]
+
+[ID-END]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Fine, thank you."
+Answer="I'm watching you."
+
+[ID-9]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Somebody stole form you? Why the hell didn't you say already?"
+Answer="You didn't ask. And who knows, maybe it was somebody from Cesferan!"
+Leads=[ "ID-10"]
+
+[ID-10]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Can you tell me anything else about the robber?"
+Answer="Well, whatever it was, it was fast and small. And it wanted my raspberries!"
+Leads=[ "ID-11"]
+
+[ID-11]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="I will report this to the captain immediately."
+Answer="My raspberries!"
+Leads=[ "ID-12"]
+
+[ID-12]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Well thank you Fex, you helped a lot. And go see a doctor..."
+Answer="No way, maybe he is the mastermind raspberry criminal."
+Leads=[ "ID-END"]

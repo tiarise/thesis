@@ -1,0 +1,53 @@
+[ID-1]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="$ßŁ&@<+!"
+Leads=[ "ID-2"]
+
+
+[ID-2]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="I'm sorry, I don't understand."
+Answer="Ah yes, my bad. I'm new here, I arrived for the festival."
+Leads=[ "ID-3"]
+
+[ID-3]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Are you from a different country?"
+Answer="Yes, the place is called Geldaran. It's quite far from here."
+Leads=[ "ID-4"]
+
+[ID-4]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Never heard of it."
+Answer="I'm not suprised. The people here are quite isolated from the rest of the world. You should get out of here, if you ask me."
+Leads=[ "ID-5"]
+
+[ID-5]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Hopefully soon I will be part of the mage guild. That way I will have to travel."
+Answer="Good, good, there is no other way to see the world for what it is."
+Leads=[ "ID-END"]
+
+
+[ID-END]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="I have to go now. It was a pleasure meeting you."
+Answer="The same here, have a nice day!"

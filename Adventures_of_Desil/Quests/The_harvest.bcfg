@@ -1,0 +1,15 @@
+[I. Check on the villagers]
+
+StartType ="Talk"
+StartTriggerLine = "Very well, I will do what I can. Thank you for the gift!"
+StartNPC="Eyner"
+
+CompletionType="Talk"
+CompleteNPC="Doltran"
+CompleteKeyLine="This year's harvest is probably the best in the last few years! May I interest you in anything?"
+
+Description="The captain guard wants me to check on the villagers in Iss'mor."
+CompletionText="The harvest seems safe so far."
+
+Priority="Primary"
+RewardExperience=15

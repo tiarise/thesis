@@ -1,0 +1,179 @@
+[ID-1]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Uhh don't sneak up on me like that!"
+Leads=[ "ID-2"]
+
+[ID-2]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Hm?"
+Answer="You make too much noise." 
+Leads=[ "ID-20"]
+
+[ID-20]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="You seem familiar. Have we met before?"
+Leads=[ "ID-21"]
+
+
+[ID-21]
+
+Conditional=true
+Reaction=true
+Battle=false
+Condition_Type="QuestIsComplete"
+Condition_Name="II. Convince Bozz to return"
+Condition_Success_Leads=["ID-23"]
+Condition_Fail_Leads=["ID-22"]
+
+[ID-22]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="I don't remember."
+Leads=[ "ID-3"]
+
+[ID-23]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Oho, I remember!"
+Leads=[ "ID-12"]
+
+[ID-3]
+
+Conditional=true
+Reaction=false
+Battle=false
+Query="What are you doing here?"
+Condition_Type="QuestIsActive"
+Condition_Name="I. Find the co-worker"
+Condition_Success_Leads=["ID-5"]
+Condition_Fail_Leads=["ID-4"]
+
+[ID-4]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Omm. Well. Yes! I'm looking for the robber! Haven't you heard? A vicious robber is on the loose!"
+Leads=[ "ID-6" ]
+
+[ID-5]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Omm. Well. Yes! I'm looking for the robber! Haven't you heard? A vicious robber is on the loose!"
+Leads=[ "ID-8" ]
+
+[ID-6]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Tell me... Why I find your story unconvincing?"
+Answer="Hmm... Did I tell you that I'm a professional?" 
+Leads=[ "ID-7"]
+
+[ID-7]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Yea, that didn't help."
+Answer="Ssssshh! I heard somebody! Get down!" 
+Leads=[ "ID-END"]
+
+[ID-END]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Bye..."
+Answer="Bye." 
+
+
+[ID-8]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Funny. Aren't you the one that Nolt is looking for?"
+Answer="Maybe?"
+Leads=[ "ID-9"]
+
+[ID-9]
+
+Conditional=true
+Reaction=false
+Battle=false
+Query="You should go and help him."
+Condition_Type="Statistic"
+Condition_Name="Strength"
+Condition_Value=50
+Condition_Success_Leads=["ID-11"]
+Condition_Fail_Leads=["ID-10"]
+
+[ID-10]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="First you have to catch me!"
+Leads=[ "ID-13" ]
+
+[ID-11]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Really?"
+Leads=[ "ID-12" ]
+
+
+[ID-12]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Look... I will tell you this once... Either you go back or..."
+Answer="Okay, okay! You don't have to be like that. I'm going..." 
+Leads=[ "ID-END"]
+
+
+[ID-13]
+
+Conditional=false
+Reaction=false
+Battle=true
+Query="Fine."
+Battle_Success_Leads=["ID-15"]
+Battle_Fail_Leads=["ID-14"]
+Answer="Do your best!"
+
+[ID-14]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Hehe, next time maybe..."
+Leads=[ "ID-END" ]
+
+[ID-15]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="I didn't see that coming!"
+Leads=[ "ID-12" ]

@@ -1,0 +1,25 @@
+[ID-1]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="My dear son! Your father is at the square."
+Leads=[ "ID-2"]
+
+
+[ID-2]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Should I help him in anything?"
+Answer="You should just concentrate on you training. We are so proud of you!"
+Leads=[ "ID-END"]
+
+[ID-END]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="I will do my best."
+Answer="Good luck my dear!" 

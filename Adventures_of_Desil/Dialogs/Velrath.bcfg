@@ -1,0 +1,126 @@
+[ID-1]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Ehh, an another midget..."
+Leads=[ "ID-2"]
+
+[ID-2]
+
+Conditional=true
+Reaction=false
+Battle=false
+Query="Good day, Sir. What do you sell?"
+Condition_Type="QuestIsComplete"
+Condition_Name="II. Fight for the doll"
+Condition_Success_Leads=["ID-4"]
+Condition_Fail_Leads=["ID-3"]
+
+[ID-3]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="What do you care? It's not like you can afford it..."
+Leads=[ "ID-5" ]
+
+[ID-4]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Are you mocking me, midget?!"
+Leads=[ "ID-END"]
+
+
+[ID-5]
+
+Conditional=true
+Reaction=true
+Battle=false
+Condition_Type="QuestIsActive"
+Condition_Name="I. Find a present"
+Condition_Success_Leads=["ID-7"]
+Condition_Fail_Leads=["ID-6"]
+
+[ID-6]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="But you can find everything! ... Umm I mean you WILL find everything as soon as I put my wares in place."
+Leads=[ "ID-8" ]
+
+[ID-8]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="What do you know of the recent robberies?"
+Answer="Nothing, except that for now I haven't been robbed! I protect my goods, others should too. Idiots..."
+Leads=[ "ID-9" ]
+
+[ID-9]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="I don't think the robbers are from Cesferan."
+Answer="Maybe. Kid, don't you have better things to do than to annoy me? Come back once I've set up my shop."
+Leads=[ "ID-END" ]
+
+
+[ID-END]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="It was a pleasure talking to you sir, as always."
+Answer="At last you are leaving, and you should try doing something actually useful."
+
+
+[ID-7]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Antiquities, weapons, crates, even this useless doll."
+Leads=[ "ID-10" ]
+
+
+[ID-10]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="May I buy that doll? It would be a present."
+Answer="That's sweet. Let's make this interesting. I know you are preparing for a magic exam. If you can beat me, then the doll is yours."
+Leads=[ "ID-11" ]
+
+
+[ID-11]
+
+Conditional=false
+Reaction=false
+Battle=true
+Query="Okay, that's a fair deal, even from you..."
+Battle_Success_Leads=["ID-13"]
+Battle_Fail_Leads=["ID-12"]
+Answer="This will be interesting!"
+
+[ID-12]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Well, the doll stays with me, it seems. But feel free to try again sometime, midget. Hehe..."
+Leads=[ "ID-END" ]
+
+[ID-13]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="You are suprisingly fast! Damn, I'm too old for this."
+Leads=[ "ID-END" ]

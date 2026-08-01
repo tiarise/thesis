@@ -1,0 +1,16 @@
+[ID-1]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Hello! If you wish to buy a sack of fresh spice from the harvest, please ask someone in the main camp."
+Leads=[ "ID-END"]
+
+
+[ID-END]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Ah okay, thank you for the info."
+Answer="My pleasure."

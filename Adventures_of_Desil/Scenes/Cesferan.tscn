@@ -1,0 +1,2640 @@
+[gd_scene load_steps=34 format=1]
+
+[ext_resource path="res://Scripts/CesferanSceneRoot.gd" type="Script" id=1]
+[ext_resource path="res://Textures/Cesferan/CesferanLayers/terrain_3000x3000(cesferan)crops_lamp_market_houses_etc.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Cesferan/CesferanLayers/terrain_3000x3000(cesferan)roads_base_grass.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/SoundManager.gd" type="Script" id=4]
+[ext_resource path="res://Audio/WorldSounds/TimedSounds/thunder_rumbling_ 1.wav" type="Sample" id=5]
+[ext_resource path="res://Audio/WorldSounds/TimedSounds/thunder_rumbling_ 2.wav" type="Sample" id=6]
+[ext_resource path="res://Audio/WorldSounds/TimedSounds/thunder_rumbling_ 3.wav" type="Sample" id=7]
+[ext_resource path="res://Audio/WorldSounds/TimedSounds/thunderclap_1.wav" type="Sample" id=8]
+[ext_resource path="res://Audio/WorldSounds/ConstantSounds/light_rain.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Audio/MiscSounds/notification.smp" type="Sample" id=10]
+[ext_resource path="res://Audio/Music/Dexter_Britain_-_05_-_Seeing_The_Future.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Audio/Music/ofeliasdream.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Textures/GameEffects/Lights/Lamps.png" type="Texture" id=13]
+[ext_resource path="res://Textures/GameEffects/Rain/rainDrop.png" type="Texture" id=14]
+[ext_resource path="res://Textures/GameEffects/Rain/rainDropBig.png" type="Texture" id=15]
+[ext_resource path="res://Textures/GameEffects/Rain/rainDropGiga.png" type="Texture" id=16]
+[ext_resource path="res://Scenes/KinematicAnimatedSprite.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scripts/DialogManager.gd" type="Script" id=18]
+[ext_resource path="res://Scripts/QuestManager.gd" type="Script" id=19]
+[ext_resource path="res://Scripts/Cesferan_WorldEvents_SceneChange.gd" type="Script" id=20]
+[ext_resource path="res://Scripts/Cesferan_WorldEvents_AreaTrigger.gd" type="Script" id=21]
+[ext_resource path="res://Scripts/Player_Navigation.gd" type="Script" id=22]
+[ext_resource path="res://Scripts/UI_Camera_Navigation.gd" type="Script" id=23]
+[ext_resource path="res://Scenes/PlayerAndUI.tscn" type="PackedScene" id=24]
+[ext_resource path="res://icon.png" type="Texture" id=25]
+
+[sub_resource type="SampleLibrary" id=1]
+
+samples/0 = { "db":10.0, "pitch":1.0, "sample":ExtResource( 5 ) }
+samples/1 = { "db":10.0, "pitch":1.0, "sample":ExtResource( 6 ) }
+samples/2 = { "db":10.0, "pitch":1.0, "sample":ExtResource( 7 ) }
+
+[sub_resource type="SampleLibrary" id=2]
+
+samples/0 = { "db":0.0, "pitch":1.0, "sample":ExtResource( 8 ) }
+
+[sub_resource type="SampleLibrary" id=3]
+
+samples/notification = { "db":0.0, "pitch":1.0, "sample":ExtResource( 10 ) }
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 24.7518, 20.1194 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 53.4498, 10 )
+
+[sub_resource type="NavigationPolygon" id=8]
+
+vertices = Vector2Array( 2124.66, 1350.86, 2488.33, 1322.45, 2555.96, 1318.78, 2524.38, 1775.09, 2415.23, 1719.14, 2273.35, 1616.96, 2264.12, 1156.84, 2553.02, 1253.35, 2475.83, 1254.82, 1294, 1240.09, 2175.18, 1157.58, 1797.65, 1070.54, 2232.14, 890.828, 2259.71, 1083.33, 2163.42, 1086.27, 1792.76, 1089.28, 2067.53, 1932.31, 2240.67, 2067.81, 2182.6, 2070.75, 604.186, 2054.86, 600.869, 2018.37, 2024.89, 1930.11, 3000.03, 0.336334, 2816.16, 2069.58, 2797.58, 2027.78, 1787.88, 1037.15, 1729.23, 1043.67, 1712.13, 1038.78, 1710.5, 996.424, 1943.71, 1753.11, 2143.98, 1661.06, 1910.95, 1801.47, 1887.42, 1787.84, 1422.93, 918.344, 1437.37, 891.269, 2192.43, 885.413, 1607.06, 1002.94, 3000.07, 3000.33, 2714.82, 2445.07, 2714.88, 2379.95, 2796.92, 2100.76, 2527.64, 1852.46, 2690.11, 1929.6, 2316.29, 2154.89, 2239.93, 2120, 2468.18, 1854.91, 1562.15, 2173.49, 1850.8, 2116.15, 1503.83, 2289.97, 1523.05, 2183.26, 1445.86, 248.402, 1451, 196.945, 2529.34, 185.579, 2543.87, 189.54, 2266.08, 300.854, 1855.44, 329.734, 1903.15, 2706.14, 1735.15, 2834.14, 1712.49, 2778.65, 1709.55, 2730.86, 2278.72, 322.514, 2567.63, 186.459, 2257.41, 877.29, 2256.51, 821.335, 2272.4, 357.712, 2489.17, 2486.09, 2634.54, 2497.48, 2673.68, 2502.12, 2459.86, 2943.46, 2405.09, 2592.2, 2441.93, 2486.9, 1184.16, 395.421, 1223.12, 372.633, 1254, 370.428, 1398.14, 484.706, 1088.13, 712.707, 1058.78, 542.832, 1053.37, 503.122, 1120.21, 443.938, 1416.75, 1313.46, 1407.93, 1359.03, 1396.17, 1339.18, 1387.35, 1294.34, 1382.2, 1254.65, 2452.7, 1775.9, 1713.19, 1732.16, 1798.81, 1795.62, 1768.28, 1814.18, 1459.69, 1804.72, 1435.25, 1733.04, 1557.43, 1726.53, 1199.16, 2425.48, 1550.94, 2363.61, 1658.41, 2433.93, 1191.87, 2450.02, 2467.2, 2275.24, 2007.52, 2309.12, 1958.65, 2310.75, 1988.13, 2252.15, 2184.8, 2120.74, 1704.4, 2810.25, 1720.21, 2856.07, 2707.52, 2485.54, 2560.87, 2418.86, 2485.1, 2436.4, 2626.42, 2198.95, 2630.04, 2334.56, 1390.46, 1713.49, 1381.49, 1673.37, 1391.05, 1650.58, 1405.12, 1631.23, 1424.66, 1651.59, 1434.44, 1703.72, 1380.75, 1592.51, 1403.49, 1592.13, 1420.59, 1573.4, 1283.72, 1591.04, 1279.31, 1577.07, 1433.62, 1528.6, 1325.62, 1595.45, 2538.85, 2277.89, 2436.23, 2434.78, 2009.61, 2363.6, 2505.01, 2279.22, 1511.13, 2329.77, 1194.52, 2359.13, 1205.96, 1851.99, 1264.21, 1790.06, 1312.26, 1843, 1202.72, 1888.19, 1892.81, 1868.07, 1910.78, 1841.13, 0.198479, 3000.7, -0.513123, 2651.13, 52.7347, 2686.33, 2462.57, 2973.24, 2461.28, 2996.89, 2.1944, 2448.06, -0.306473, 2337.3, 46.994, 2365.44, 86.1275, 2483.26, 1382.94, 1363.44, 1408.67, 1366.38, 1344.71, 1489.14, 1926.39, 1869.83, 1982.16, 2208.36, 1034.42, 559.98, 1782.77, 1585.34, 1804.92, 1543.19, 2089.46, 1359.89, 1991.37, 1602.91, 2047.04, 1349.06, 1798.44, 1503.2, 2105.16, 2826.08, 2107.04, 2778.21, 2421.06, 2941.66, 2133.66, 2855.26, 2070.28, 2806.15, 2579.52, 172.815, 2578.2, 138.485, 1938.92, 1701.62, 1986.98, 1679.47, 1921.4, 2655.42, 1616.19, 2736.01, 1317.74, 2702.93, 844.801, 2622.04, 830.834, 2552.94, 1154.72, 2458.65, 1197.32, 1836.32, 1147.6, 1841.72, 1036.66, 1790.1, 1032.98, 1761.86, 1276.42, 1756.66, 1316.8, 1616.03, 1282.25, 1625.59, 1759.29, 1845.32, 1441.77, 1829.97, 1457.18, 1348.01, 1463.8, 1329.63, 1465.27, 1348.74, 1454.98, 1376.67, 1450.57, 1320.07, 1464.53, 1317.87, 1483.14, 2182.45, 1559.71, 2137.65, 2204.41, 2492.96, 1322.68, 1653.52, 1224.91, 1663.81, 1909.93, 1605.83, 1907.98, 1649.24, 1849.7, 1644.74, 1694.27, 1620.64, 1744.94, 1594.52, 2120.15, 1284.08, 2038.02, 1291.3, 1538.04, 1265.68, 145.693, 2711.6, 132.614, 2378.61, 156.523, 2538.31, 1817.54, 410.96, 1812.12, 468.72, 1702.54, 410.306, 1695.74, 354.53, 1691.66, 447.036, 1814.83, 536.408, 1966.44, 2366.05, 1783.85, 1475.1, 1289.09, 1198.35, 1473.36, 1370.79, 2528.9, 145.527, 1254.94, 55.3207, 190.327, 2056.45, -0.133362, 2056.37, -0.299755, 0.509184, 2315.25, 1784.56, 2305.7, 1808.82, 623.732, 2364.1, 622.997, 2314.11, 1097, 2361.79, 1102.97, 2442.73, 758.795, 2555.88, 2125.43, 647.536, 2193.34, 824.043, 1431.05, 856.974, 2086.26, 649.737, 2581.31, 2210.89, 2602.54, 2198.95, 2558.09, 2258.66, 1964.91, 2264.76, 1814.98, 2320.48, 1934.4, 2266.08, 1823.6, 2351, 1319.21, 2757.33, 1606.64, 2757.33, 1625.01, 2814.67, 1461.15, 2175.93, 1554.82, 2101.81, 1675, 2819.81, 1795.08, 2368.25, 2258.86, 436.23, 1992.35, 1651.68, 2238.1, 373.055, 2228.18, 554.458, 2157.12, 595.601, 2150.52, 633.012, 1455.14, 748.707, 1496.14, 721.707, 1628.14, 638.707, 1956.52, 618.536, 2067.78, 641.375, 1448.14, 771.708, 1417.14, 778.708, 1398.56, 845.241, 1357.14, 794.708, 1381.14, 779.708, 1336.29, 872.317, 1279.14, 861.708, 1328.17, 890.367, 1577, 1304.64, 1558.63, 1274.5, 1570.39, 1334.04, 1768.72, 1426.47, 1746.56, 1421.61, 1844.61, 360.419, 1923.1, 1680.94, 1652.73, 1650.78, 1612.82, 1679.28, 1585.12, 1706.16, 2287.32, 1822.05, 2263.06, 1819.11, 1702.35, 1060.77, 1731.68, 1076.25, 1004.74, 1835.53, 1147.06, 1874.14, 2416.42, 2997.38, 1947.83, 3000.43, 2018.8, 611.316, 2060.29, 611.006, 1241.29, 2705.14, 194.11, 2368.65, 208.868, 2567.19, 240.456, 2605.1, 226.532, 2361.62, 294.606, 2636.69, 1120.89, 1339.54, 1124.58, 1328.49, 1156.5, 1306.39, 1173.69, 1319.9, 1109.84, 1373.92, 206.161, 2721.52, 243.164, 2773.87, 269.336, 2804.55, 1247.17, 2758.06, 809.516, 2641.15, 277.866, 2078.06, 280.373, 1836.75, 1005.54, 559.98, 565.48, 770.306, 1768.18, 1459.97, 1775.2, 1439.98, 1724.41, 1425.93, 1687.66, 1438.9, 1645.51, 1448.63, 1622.28, 1461.05, 1508.64, 1374.47, 1590.94, 1484.29, 1509.37, 1500.91, 1481.68, 1500.91, 1426.31, 1372.26, 1360.89, 1377.41, 1324.87, 1394.32, 1249.89, 1419.31, 1301.34, 1395.79, 1272.67, 1370.79, 1221.95, 1320.81, 1231.51, 1419.31, 1329.3, 1675.57, 1311.45, 1723.27, 1188.16, 1682.19, 528.377, 1948.48, 605.725, 1899.37, 642.558, 1925.15, 656.063, 1950.93, 662.202, 1966.9, 1684.29, 2416.02, 1762.57, 2368.25, 601.679, 2381, 2217.48, 1830.14, 2249.83, 1811.76, 2213.81, 1846.31, 2004.31, 1908.06, 1987.4, 1882.33, 580.302, 2005.77, 1946.23, 1879.39, 1276.82, 1178.71, 1769.96, 1094.98, 1019.48, 1734.85, 1457.89, 2149.05, 590.254, 2071.45, 1154.32, 1470.03, 697.806, 1603.48, 1018.99, 1427.94, 1360.32, 1881.28, 1649.49, 466.082, 1847.32, 568.898, 1457.89, 2101.81, 545.812, 2310.44, 565.044, 2077.42, 533.199, 2065.48, 1673.85, 1076.25, 1743.89, 1090.91, 302.403, 2814.54, 1331.78, 912.929, 1261.35, 337.349, 1265.03, 322.647, 1284.87, 313.09, 1316.48, 310.15, 931.078, 1868.68, 934.761, 1845.35, 948.266, 1831.84, 1158.41, 1887.65, 1471.89, 1309.78, 1475.98, 1720.01, 1362.76, 1702.09, 1166.11, 1656.46, 1156.55, 1630, 1147.73, 1599.12, 1141.85, 1564.57, 962.999, 1728.71, 899.156, 1721.35, 1776.06, 1865.68, 1398.6, 1860.92, 1298.63, 2772.03, 1917.03, 2989.32, 1607.06, 1049.37, 1383.22, 932.784, 234.097, 2351.36, 269.761, 2340.55, 306.506, 2340.01, 323.734, 2682.59, 334.604, 2320.02, 356.879, 2717.91, 570.805, 2378.8, 759.53, 2629.39, 1266.08, 1570.46, 1232.62, 1548.77, 1797.01, 1870.47, 1832.94, 1857.89, 1855.69, 1867.47, 1342.51, 1253.18, 1336.63, 1263.47, 1302.81, 1275.23, 1281.73, 1264.65, 1709.28, 1589.12, 1665.76, 1584.8, 1681.72, 1569.13, 1669.83, 1551.29, 1571.28, 1531.04, 1602.28, 1510.77, 1545.21, 1512.31, 1235.88, 1558.55, 1187.82, 1535.74, 1141.09, 1503.11, 1169.9, 1548.77, 1897.86, 574.313, 1938.47, 592.363, 1611.4, 463.361, 1582.83, 437.514, 1582.83, 384.459, 1411.31, 266.044, 1969.02, 1874.24, 1874.25, 1874.06, 771.471, 1963.21, 1175.16, 1898.46, 470.673, 1976.72, 692.895, 1977.95, 547.795, 2005.11, 1193.33, 1317.44, 357.782, 2761.23, 548.017, 2369.98, 342.439, 2799.14, 1350.73, 934.589, 1626.6, 1067.29, 1370.88, 282.952, 1344.42, 297.653, 1026.12, 406.448, 1101.1, 435.116, 991.999, 505.829, 985.689, 389.54, 956.285, 357.931, 990.194, 538.32, 348.114, 2287.05, 1226.48, 1286.75, 1255.94, 1275.7, 735.866, 1981.63, 1192.13, 811.708, 1249.14, 843.708, 1339.9, 930.077, 1656.74, 1077.87, 930.557, 310.885, 479.141, 797.571, 357.84, 2250.31, 1267.02, 2769.09, 1131.13, 771.708, 410.978, 863.461, 399.618, 961.161, 409.286, 1957.07, 548.753, 2331.75, 348.654, 2157.61, 329.201, 2116.97, 532.536, 2022.35, 551.848, 1179.28, 474.597, 1113.39, 410.978, 1052.04, 357.3, 2203 )
+polygons = [ IntArray( 0, 1, 2, 3, 4, 5 ), IntArray( 6, 7, 8, 9, 10 ), IntArray( 11, 12, 13, 14, 15 ), IntArray( 16, 17, 18, 19, 20, 21 ), IntArray( 22, 23, 24, 2, 7 ), IntArray( 25, 26, 27, 28, 12 ), IntArray( 29, 30, 31, 32 ), IntArray( 33, 34, 35, 12, 28, 36 ), IntArray( 22, 37, 23 ), IntArray( 23, 37, 38, 39, 40 ), IntArray( 41, 42, 43, 44, 17, 45 ), IntArray( 46, 47, 48, 49 ), IntArray( 50, 51, 52, 53, 54, 55 ), IntArray( 56, 57, 58, 59 ), IntArray( 60, 61, 22, 7, 6, 62, 63, 64 ), IntArray( 65, 66, 67, 68, 69, 70 ), IntArray( 71, 72, 73, 74, 75, 76, 77, 78 ), IntArray( 79, 80, 81, 82, 83 ), IntArray( 4, 3, 84 ), IntArray( 2, 24, 42 ), IntArray( 85, 86, 87, 88, 89, 90 ), IntArray( 91, 92, 93, 94 ), IntArray( 62, 6, 13 ), IntArray( 44, 43, 95, 96, 97, 98, 99 ), IntArray( 100, 58, 57, 101 ), IntArray( 102, 38, 37 ), IntArray( 103, 66, 65, 104 ), IntArray( 105, 40, 39, 106 ), IntArray( 107, 108, 109, 110, 111, 112, 89 ), IntArray( 110, 109, 113, 114 ), IntArray( 115, 114, 113, 116, 117, 118 ), IntArray( 116, 113, 119 ), IntArray( 120, 106, 103, 104, 121, 122, 96, 123 ), IntArray( 124, 92, 91, 125 ), IntArray( 2, 42, 41, 3 ), IntArray( 126, 127, 128, 129 ), IntArray( 130, 32, 31, 131 ), IntArray( 132, 133, 134 ), IntArray( 135, 102, 37, 136 ), IntArray( 102, 135, 68, 67 ), IntArray( 137, 138, 139, 140 ), IntArray( 141, 81, 80, 142, 143 ), IntArray( 130, 131, 144 ), IntArray( 12, 62, 13 ), IntArray( 99, 98, 145 ), IntArray( 146, 76, 75 ), IntArray( 147, 148, 149, 0, 5, 150 ), IntArray( 151, 149, 148, 152 ), IntArray( 153, 154, 69, 68, 155, 156 ), IntArray( 153, 157, 154 ), IntArray( 22, 158, 159 ), IntArray( 30, 29, 160, 161 ), IntArray( 94, 93, 162, 56, 59, 163, 164, 165, 166, 167 ), IntArray( 127, 126, 168 ), IntArray( 127, 168, 169, 170, 171, 172 ), IntArray( 116, 119, 173, 174 ), IntArray( 88, 87, 175, 176 ), IntArray( 177, 178, 179, 180 ), IntArray( 178, 177, 181, 182 ), IntArray( 183, 49, 48, 125 ), IntArray( 47, 46, 184 ), IntArray( 121, 70, 69, 185, 122 ), IntArray( 174, 173, 186, 187 ), IntArray( 147, 188, 189, 190, 191, 192 ), IntArray( 12, 11, 25 ), IntArray( 8, 1, 0, 193 ), IntArray( 9, 8, 193 ), IntArray( 9, 193, 194, 195, 83 ), IntArray( 132, 134, 196 ), IntArray( 140, 139, 197, 198 ), IntArray( 48, 124, 125 ), IntArray( 199, 200, 201, 202 ), IntArray( 203, 201, 200, 204 ), IntArray( 122, 185, 162, 205 ), IntArray( 151, 152, 206 ), IntArray( 14, 10, 9, 207 ), IntArray( 180, 179, 208 ), IntArray( 209, 52, 51, 210 ), IntArray( 211, 212, 213 ), IntArray( 214, 4, 84, 45, 17, 215 ), IntArray( 216, 217, 218, 219, 166, 220 ), IntArray( 221, 222, 35, 34, 223, 224 ), IntArray( 225, 226, 105, 106, 227 ), IntArray( 120, 227, 106 ), IntArray( 95, 123, 96 ), IntArray( 228, 98, 97 ), IntArray( 229, 230, 228, 97, 231 ), IntArray( 232, 164, 233, 234 ), IntArray( 235, 183, 125 ), IntArray( 19, 18, 99, 47, 236 ), IntArray( 47, 184, 236 ), IntArray( 237, 100, 101 ), IntArray( 231, 97, 205, 162, 238 ), IntArray( 64, 63, 222, 239 ), IntArray( 30, 240, 150, 5 ), IntArray( 239, 241, 64 ), IntArray( 242, 239, 222 ), IntArray( 243, 242, 222, 244 ), IntArray( 221, 244, 222 ), IntArray( 245, 246, 247, 248, 249, 224, 223, 250 ), IntArray( 251, 250, 223, 252 ), IntArray( 253, 254, 251, 252, 255, 256 ), IntArray( 256, 255, 257 ), IntArray( 194, 151, 258, 259 ), IntArray( 260, 258, 151, 261, 262 ), IntArray( 263, 199, 202, 55 ), IntArray( 161, 240, 30 ), IntArray( 264, 161, 160 ), IntArray( 264, 160, 190 ), IntArray( 189, 264, 190 ), IntArray( 191, 190, 85, 265 ), IntArray( 266, 265, 85, 267 ), IntArray( 268, 215, 17 ), IntArray( 269, 268, 17 ), IntArray( 270, 27, 26, 271 ), IntArray( 272, 170, 169, 273 ), IntArray( 156, 155, 274, 275 ), IntArray( 276, 277, 249, 248 ), IntArray( 163, 233, 164 ), IntArray( 165, 164, 278 ), IntArray( 198, 197, 279, 280 ), IntArray( 281, 280, 279, 282, 283 ), IntArray( 284, 285, 286, 287, 288 ), IntArray( 132, 196, 289, 290 ), IntArray( 132, 290, 291 ), IntArray( 165, 278, 292, 293 ), IntArray( 294, 211, 213, 295 ), IntArray( 296, 146, 75, 297 ), IntArray( 151, 206, 298, 299 ), IntArray( 151, 299, 261 ), IntArray( 260, 262, 300 ), IntArray( 260, 300, 301, 302 ), IntArray( 260, 302, 303, 304 ), IntArray( 208, 304, 303, 305, 306, 307, 143, 180 ), IntArray( 308, 180, 143 ), IntArray( 142, 308, 143 ), IntArray( 309, 141, 143 ), IntArray( 310, 309, 143 ), IntArray( 310, 143, 311, 312 ), IntArray( 313, 312, 311 ), IntArray( 314, 313, 311, 315 ), IntArray( 187, 186, 316, 317, 318 ), IntArray( 319, 320, 321, 322, 323 ), IntArray( 324, 325, 238, 162, 93 ), IntArray( 219, 167, 166 ), IntArray( 326, 216, 220 ), IntArray( 327, 328, 269, 17, 329 ), IntArray( 16, 329, 17 ), IntArray( 330, 21, 20 ), IntArray( 331, 330, 20, 332, 333 ), IntArray( 14, 207, 334, 335 ), IntArray( 317, 172, 171, 336, 318 ), IntArray( 19, 337, 235, 125, 218, 217, 338 ), IntArray( 314, 315, 339, 340, 341 ), IntArray( 129, 128, 342 ), IntArray( 247, 343, 203, 204, 344 ), IntArray( 99, 145, 47 ), IntArray( 19, 236, 345 ), IntArray( 19, 345, 337 ), IntArray( 338, 217, 346, 347 ), IntArray( 348, 347, 346 ), IntArray( 349, 270, 271, 350 ), IntArray( 132, 291, 351 ), IntArray( 256, 257, 352 ), IntArray( 73, 353, 354, 355, 356, 74 ), IntArray( 357, 358, 359, 272, 273, 360 ), IntArray( 182, 181, 79, 83, 361 ), IntArray( 195, 361, 83 ), IntArray( 90, 267, 85 ), IntArray( 362, 90, 89 ), IntArray( 112, 362, 89 ), IntArray( 108, 107, 363, 316 ), IntArray( 316, 363, 317 ), IntArray( 364, 318, 336 ), IntArray( 365, 364, 336 ), IntArray( 366, 365, 336 ), IntArray( 367, 366, 336, 368, 369, 340 ), IntArray( 176, 175, 370, 371 ), IntArray( 372, 232, 234, 101, 373 ), IntArray( 33, 36, 374, 375 ), IntArray( 283, 282, 376, 377, 378 ), IntArray( 379, 283, 378, 380, 381 ), IntArray( 382, 326, 220, 383 ), IntArray( 118, 117, 384, 385, 143, 307 ), IntArray( 386, 387, 388 ), IntArray( 9, 389, 390, 391, 392 ), IntArray( 147, 150, 188 ), IntArray( 393, 192, 191, 394 ), IntArray( 395, 393, 394 ), IntArray( 396, 395, 394, 397, 398 ), IntArray( 305, 398, 397, 399 ), IntArray( 305, 399, 306 ), IntArray( 385, 384, 400, 401, 402 ), IntArray( 402, 401, 403, 367, 340 ), IntArray( 339, 402, 340 ), IntArray( 404, 405, 248, 247, 344 ), IntArray( 343, 247, 74, 406 ), IntArray( 407, 406, 74 ), IntArray( 50, 408, 407, 74, 409 ), IntArray( 333, 410, 331 ), IntArray( 144, 333, 332, 411 ), IntArray( 412, 357, 360, 413 ), IntArray( 414, 319, 323, 415, 416 ), IntArray( 288, 287, 417, 314 ), IntArray( 234, 237, 101 ), IntArray( 418, 419, 382, 383, 420 ), IntArray( 421, 375, 374, 422, 334 ), IntArray( 342, 371, 370 ), IntArray( 61, 158, 22 ), IntArray( 53, 61, 60, 54 ), IntArray( 50, 55, 202 ), IntArray( 50, 202, 408 ), IntArray( 423, 409, 74, 424 ), IntArray( 356, 424, 74 ), IntArray( 425, 426, 78, 77, 427 ), IntArray( 428, 425, 427 ), IntArray( 429, 428, 427, 430 ), IntArray( 381, 380, 431 ), IntArray( 386, 388, 411, 332 ), IntArray( 417, 432, 433, 314 ), IntArray( 194, 259, 195 ), IntArray( 9, 83, 389 ), IntArray( 392, 391, 314, 433 ), IntArray( 411, 130, 144 ), IntArray( 370, 386, 332, 416, 434 ), IntArray( 435, 436, 256, 352, 437, 297 ), IntArray( 434, 412, 413, 342, 370 ), IntArray( 413, 129, 342 ), IntArray( 438, 349, 350, 334 ), IntArray( 439, 429, 430, 297, 440, 213 ), IntArray( 418, 381, 431, 441, 419 ), IntArray( 293, 292, 442 ), IntArray( 442, 372, 373 ), IntArray( 335, 15, 14 ), IntArray( 350, 335, 334 ), IntArray( 422, 438, 334 ), IntArray( 421, 334, 297, 437 ), IntArray( 443, 435, 297 ), IntArray( 75, 443, 297 ), IntArray( 430, 296, 297 ), IntArray( 159, 209, 210, 22 ), IntArray( 213, 22, 210 ), IntArray( 213, 210, 439 ), IntArray( 213, 440, 444 ), IntArray( 213, 444, 445, 295 ), IntArray( 132, 351, 420 ), IntArray( 295, 446, 346, 447, 419, 448, 449 ), IntArray( 415, 434, 416 ), IntArray( 414, 416, 450 ), IntArray( 414, 450, 348, 446 ), IntArray( 446, 348, 346 ), IntArray( 341, 288, 314 ), IntArray( 451, 341, 340 ), IntArray( 451, 340, 295, 452 ), IntArray( 453, 452, 295 ), IntArray( 445, 453, 295 ), IntArray( 383, 293, 442, 373, 275, 132, 420 ), IntArray( 274, 136, 37 ), IntArray( 275, 274, 37 ), IntArray( 275, 37, 132 ), IntArray( 419, 441, 454 ), IntArray( 419, 454, 448 ), IntArray( 295, 449, 294 ), IntArray( 295, 445, 445 ) ]
+outlines = [ Vector2Array( -0.299755, 0.509184, 3000.03, 0.336334, 3000.07, 3000.33, 0.198479, 3000.7, -0.513123, 2651.13, 52.7347, 2686.33, 145.693, 2711.6, 206.161, 2721.52, 243.164, 2773.87, 269.336, 2804.55, 302.403, 2814.54, 342.439, 2799.14, 357.782, 2761.23, 356.879, 2717.91, 323.734, 2682.59, 294.606, 2636.69, 240.456, 2605.1, 208.868, 2567.19, 156.523, 2538.31, 86.1275, 2483.26, 2.1944, 2448.06, -0.306473, 2337.3, 46.994, 2365.44, 132.614, 2378.61, 194.11, 2368.65, 226.532, 2361.62, 234.097, 2351.36, 269.761, 2340.55, 306.506, 2340.01, 334.604, 2320.02, 348.114, 2287.05, 357.84, 2250.31, 357.3, 2203, 348.654, 2157.61, 329.201, 2116.97, 277.866, 2078.06, 190.327, 2056.45, -0.133362, 2056.37 ), Vector2Array( 2416.42, 2997.38, 2461.28, 2996.89, 2462.57, 2973.24, 2459.86, 2943.46, 2421.06, 2941.66 ), Vector2Array( 1903.15, 2706.14, 1735.15, 2834.14, 1720.21, 2856.07, 1917.03, 2989.32, 1947.83, 3000.43, 2133.66, 2855.26, 2105.16, 2826.08, 2070.28, 2806.15, 2107.04, 2778.21, 2405.09, 2592.2, 2204.41, 2492.96, 1921.4, 2655.42 ), Vector2Array( 1684.29, 2416.02, 1762.57, 2368.25, 1795.08, 2368.25, 1823.6, 2351, 1814.98, 2320.48, 1934.4, 2266.08, 1964.91, 2264.76, 1988.13, 2252.15, 1982.16, 2208.36, 1850.8, 2116.15, 1503.83, 2289.97, 1511.13, 2329.77, 1550.94, 2363.61, 1658.41, 2433.93 ), Vector2Array( 2816.16, 2069.58, 2796.92, 2100.76, 2626.42, 2198.95, 2602.54, 2198.95, 2581.31, 2210.89, 2558.09, 2258.66, 2538.85, 2277.89, 2505.01, 2279.22, 2467.2, 2275.24, 2316.29, 2154.89, 2690.11, 1929.6, 2797.58, 2027.78 ), Vector2Array( 2560.87, 2418.86, 2630.04, 2334.56, 2714.88, 2379.95, 2714.82, 2445.07, 2707.52, 2485.54, 2673.68, 2502.12, 2634.54, 2497.48 ), Vector2Array( 2441.93, 2486.9, 2489.17, 2486.09, 2485.1, 2436.4, 2436.23, 2434.78 ), Vector2Array( 1966.44, 2366.05, 2009.61, 2363.6, 2007.52, 2309.12, 1958.65, 2310.75 ), Vector2Array( 2184.8, 2120.74, 2239.93, 2120, 2240.67, 2067.81, 2182.6, 2070.75 ), Vector2Array( 2468.18, 1854.91, 2527.64, 1852.46, 2524.38, 1775.09, 2452.7, 1775.9 ), Vector2Array( 2067.53, 1932.31, 2213.81, 1846.31, 2217.48, 1830.14, 2249.83, 1811.76, 2263.06, 1819.11, 2287.32, 1822.05, 2305.7, 1808.82, 2315.25, 1784.56, 2415.23, 1719.14, 2273.35, 1616.96, 2143.98, 1661.06, 1910.95, 1801.47, 1910.78, 1841.13, 1926.39, 1869.83, 1946.23, 1879.39, 1969.02, 1874.24, 1987.4, 1882.33, 2004.31, 1908.06, 2024.89, 1930.11 ), Vector2Array( 1943.71, 1753.11, 1887.42, 1787.84, 1892.81, 1868.07, 1874.25, 1874.06, 1855.69, 1867.47, 1832.94, 1857.89, 1797.01, 1870.47, 1776.06, 1865.68, 1759.29, 1845.32, 1768.28, 1814.18, 1798.81, 1795.62, 1713.19, 1732.16, 1849.7, 1644.74, 1938.92, 1701.62 ), Vector2Array( 1923.1, 1680.94, 1986.98, 1679.47, 1992.35, 1651.68, 1991.37, 1602.91, 1909.93, 1605.83, 1907.98, 1649.24 ), Vector2Array( 2047.04, 1349.06, 2089.46, 1359.89, 2124.66, 1350.86, 2120.15, 1284.08, 2038.02, 1291.3 ), Vector2Array( 2488.33, 1322.45, 2555.96, 1318.78, 2553.02, 1253.35, 2475.83, 1254.82 ), Vector2Array( 2175.18, 1157.58, 2264.12, 1156.84, 2259.71, 1083.33, 2163.42, 1086.27 ), Vector2Array( 1625.01, 2814.67, 1675, 2819.81, 1704.4, 2810.25, 1712.49, 2778.65, 1709.55, 2730.86, 1616.19, 2736.01, 1606.64, 2757.33 ), Vector2Array( 1247.17, 2758.06, 1267.02, 2769.09, 1298.63, 2772.03, 1319.21, 2757.33, 1317.74, 2702.93, 1241.29, 2705.14 ), Vector2Array( 759.53, 2629.39, 809.516, 2641.15, 844.801, 2622.04, 830.834, 2552.94, 758.795, 2555.88 ), Vector2Array( 1102.97, 2442.73, 1154.72, 2458.65, 1191.87, 2450.02, 1199.16, 2425.48, 1194.52, 2359.13, 1097, 2361.79 ), Vector2Array( 1459.69, 1804.72, 1441.77, 1829.97, 1398.6, 1860.92, 1360.32, 1881.28, 1312.26, 1843, 1264.21, 1790.06, 1276.42, 1756.66, 1311.45, 1723.27, 1362.76, 1702.09, 1390.46, 1713.49, 1435.25, 1733.04 ), Vector2Array( 1475.98, 1720.01, 1434.44, 1703.72, 1424.66, 1651.59, 1405.12, 1631.23, 1403.49, 1592.13, 1420.59, 1573.4, 1433.62, 1528.6, 1481.68, 1500.91, 1509.37, 1500.91, 1545.21, 1512.31, 1571.28, 1531.04, 1665.76, 1584.8, 1694.27, 1620.64, 1652.73, 1650.78, 1612.82, 1679.28, 1585.12, 1706.16, 1557.43, 1726.53 ), Vector2Array( 1602.28, 1510.77, 1669.83, 1551.29, 1681.72, 1569.13, 1709.28, 1589.12, 1744.94, 1594.52, 1782.77, 1585.34, 1804.92, 1543.19, 1798.44, 1503.2, 1783.85, 1475.1, 1768.18, 1459.97, 1775.2, 1439.98, 1768.72, 1426.47, 1746.56, 1421.61, 1724.41, 1425.93, 1687.66, 1438.9, 1645.51, 1448.63, 1622.28, 1461.05, 1590.94, 1484.29 ), Vector2Array( 1408.67, 1366.38, 1426.31, 1372.26, 1454.98, 1376.67, 1457.18, 1348.01, 1450.57, 1320.07, 1416.75, 1313.46, 1407.93, 1359.03 ), Vector2Array( 1508.64, 1374.47, 1570.39, 1334.04, 1577, 1304.64, 1558.63, 1274.5, 1538.04, 1265.68, 1471.89, 1309.78, 1464.53, 1317.87, 1463.8, 1329.63, 1465.27, 1348.74, 1473.36, 1370.79 ), Vector2Array( 1396.17, 1339.18, 1382.94, 1363.44, 1360.89, 1377.41, 1324.87, 1394.32, 1301.34, 1395.79, 1272.67, 1370.79, 1221.95, 1320.81, 1302.81, 1275.23, 1336.63, 1263.47, 1342.51, 1253.18, 1382.2, 1254.65, 1387.35, 1294.34 ), Vector2Array( 1232.62, 1548.77, 1344.71, 1489.14, 1249.89, 1419.31, 1231.51, 1419.31, 1154.32, 1470.03, 1141.09, 1503.11 ), Vector2Array( 1322.68, 1653.52, 1329.3, 1675.57, 1381.49, 1673.37, 1391.05, 1650.58, 1380.75, 1592.51, 1325.62, 1595.45, 1316.8, 1616.03 ), Vector2Array( 1282.25, 1625.59, 1224.91, 1663.81, 1188.16, 1682.19, 1166.11, 1656.46, 1156.55, 1630, 1147.73, 1599.12, 1141.85, 1564.57, 1169.9, 1548.77, 1187.82, 1535.74, 1235.88, 1558.55, 1266.08, 1570.46, 1279.31, 1577.07, 1283.72, 1591.04 ), Vector2Array( 1457.89, 2149.05, 1461.15, 2175.93, 1483.14, 2182.45, 1523.05, 2183.26, 1562.15, 2173.49, 1559.71, 2137.65, 1554.82, 2101.81, 1457.89, 2101.81 ), Vector2Array( 548.753, 2331.75, 548.017, 2369.98, 570.805, 2378.8, 601.679, 2381, 623.732, 2364.1, 622.997, 2314.11, 545.812, 2310.44 ), Vector2Array( 532.536, 2022.35, 533.199, 2065.48, 565.044, 2077.42, 590.254, 2071.45, 604.186, 2054.86, 600.869, 2018.37, 580.302, 2005.77, 547.795, 2005.11 ), Vector2Array( 931.078, 1868.68, 771.471, 1963.21, 735.866, 1981.63, 692.895, 1977.95, 662.202, 1966.9, 656.063, 1950.93, 642.558, 1925.15, 605.725, 1899.37, 528.377, 1948.48, 470.673, 1976.72, 409.286, 1957.07, 280.373, 1836.75, 697.806, 1603.48, 899.156, 1721.35, 962.999, 1728.71, 1019.48, 1734.85, 1032.98, 1761.86, 1036.66, 1790.1, 1004.74, 1835.53, 948.266, 1831.84, 934.761, 1845.35 ), Vector2Array( 1147.6, 1841.72, 1147.06, 1874.14, 1158.41, 1887.65, 1175.16, 1898.46, 1202.72, 1888.19, 1205.96, 1851.99, 1197.32, 1836.32 ), Vector2Array( 1018.99, 1427.94, 1109.84, 1373.92, 1120.89, 1339.54, 1124.58, 1328.49, 1156.5, 1306.39, 1173.69, 1319.9, 1193.33, 1317.44, 1226.48, 1286.75, 1255.94, 1275.7, 1281.73, 1264.65, 1294, 1240.09, 1289.09, 1198.35, 1276.82, 1178.71, 565.48, 770.306, 479.141, 797.571, 410.978, 863.461, 399.618, 961.161, 399.618, 961.161, 410.978, 1052.04, 474.597, 1113.39, 551.848, 1179.28 ), Vector2Array( 1729.23, 1043.67, 1731.68, 1076.25, 1743.89, 1090.91, 1769.96, 1094.98, 1792.76, 1089.28, 1797.65, 1070.54, 1787.88, 1037.15 ), Vector2Array( 1607.06, 1002.94, 1607.06, 1049.37, 1626.6, 1067.29, 1656.74, 1077.87, 1673.85, 1076.25, 1702.35, 1060.77, 1712.13, 1038.78, 1710.5, 996.424 ), Vector2Array( 1336.29, 872.317, 1328.17, 890.367, 1331.78, 912.929, 1339.9, 930.077, 1350.73, 934.589, 1383.22, 932.784, 1422.93, 918.344, 1437.37, 891.269, 1431.05, 856.974, 1398.56, 845.241 ), Vector2Array( 1088.13, 712.707, 1131.13, 771.708, 1192.13, 811.708, 1249.14, 843.708, 1279.14, 861.708, 1357.14, 794.708, 1381.14, 779.708, 1417.14, 778.708, 1448.14, 771.708, 1455.14, 748.707, 1496.14, 721.707, 1628.14, 638.707, 1398.14, 484.706 ), Vector2Array( 991.999, 505.829, 990.194, 538.32, 1005.54, 559.98, 1034.42, 559.98, 1058.78, 542.832, 1053.37, 503.122 ), Vector2Array( 930.557, 310.885, 956.285, 357.931, 985.689, 389.54, 1026.12, 406.448, 1101.1, 435.116, 1120.21, 443.938, 1184.16, 395.421, 1223.12, 372.633, 1254, 370.428, 1261.35, 337.349, 1265.03, 322.647, 1284.87, 313.09, 1316.48, 310.15, 1344.42, 297.653, 1370.88, 282.952, 1411.31, 266.044, 1445.86, 248.402, 1451, 196.945, 1254.94, 55.3207 ), Vector2Array( 1582.83, 384.459, 1582.83, 437.514, 1611.4, 463.361, 1649.49, 466.082, 1691.66, 447.036, 1702.54, 410.306, 1695.74, 354.53 ), Vector2Array( 2193.34, 824.043, 2192.43, 885.413, 2232.14, 890.828, 2257.41, 877.29, 2256.51, 821.335 ), Vector2Array( 1844.61, 360.419, 1817.54, 410.96, 1812.12, 468.72, 1814.83, 536.408, 1847.32, 568.898, 1897.86, 574.313, 1938.47, 592.363, 1956.52, 618.536, 2018.8, 611.316, 2060.29, 611.006, 2067.78, 641.375, 2086.26, 649.737, 2125.43, 647.536, 2150.52, 633.012, 2157.12, 595.601, 2228.18, 554.458, 2258.86, 436.23, 2238.1, 373.055, 2272.4, 357.712, 2278.72, 322.514, 2266.08, 300.854, 1855.44, 329.734 ), Vector2Array( 2528.9, 145.527, 2529.34, 185.579, 2543.87, 189.54, 2567.63, 186.459, 2579.52, 172.815, 2578.2, 138.485 ) ]
+
+[node name="SceneRoot" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="BackgroundLayers" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="Buildings and all props" type="Sprite" parent="BackgroundLayers"]
+
+z/z = -3
+texture = ExtResource( 2 )
+centered = false
+__meta__ = { "_edit_lock_":true }
+
+[node name="Base_Roads_Grass" type="Sprite" parent="BackgroundLayers"]
+
+z/z = -5
+texture = ExtResource( 3 )
+centered = false
+__meta__ = { "_edit_lock_":true }
+
+[node name="Sounds" type="Node2D" parent="."]
+
+editor/display_folded = true
+script/script = ExtResource( 4 )
+
+[node name="WorldSounds" type="Node2D" parent="Sounds"]
+
+editor/display_folded = true
+
+[node name="TimedSounds" type="Node2D" parent="Sounds/WorldSounds"]
+
+[node name="ThunderRumbling" type="SamplePlayer2D" parent="Sounds/WorldSounds/TimedSounds" groups=[ "WorldSounds_TimedSounds" ]]
+
+editor/display_folded = true
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 16384.0
+params/attenuation/distance_exp = 4.02682e-05
+config/polyphony = 1
+config/samples = SubResource( 1 )
+config/pitch_random = 0.0
+
+[node name="Timer" type="Timer" parent="Sounds/WorldSounds/TimedSounds/ThunderRumbling"]
+
+process_mode = 1
+wait_time = 25.0
+one_shot = true
+autostart = false
+
+[node name="Thunder" type="SamplePlayer2D" parent="Sounds/WorldSounds/TimedSounds" groups=[ "WorldSounds_TimedSounds" ]]
+
+editor/display_folded = true
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 16384.0
+params/attenuation/distance_exp = 4.02682e-05
+config/polyphony = 1
+config/samples = SubResource( 2 )
+config/pitch_random = 0.0
+
+[node name="Timer" type="Timer" parent="Sounds/WorldSounds/TimedSounds/Thunder"]
+
+process_mode = 1
+wait_time = 40.0
+one_shot = true
+autostart = false
+
+[node name="ConstantSounds" type="Node2D" parent="Sounds/WorldSounds"]
+
+[node name="Rain" type="StreamPlayer" parent="Sounds/WorldSounds/ConstantSounds" groups=[ "EnviormentalEffectSounds", "WorldSounds_ConstantSounds" ]]
+
+stream/stream = ExtResource( 9 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[node name="MiscSounds" type="Node2D" parent="Sounds"]
+
+editor/display_folded = true
+
+[node name="Popup" type="SamplePlayer2D" parent="Sounds/MiscSounds" groups=[ "MiscSounds" ]]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 0.0
+params/attenuation/max_distance = 10000.0
+params/attenuation/distance_exp = 0.000793213
+config/polyphony = 1
+config/samples = SubResource( 3 )
+config/pitch_random = 0.0
+
+[node name="Music" type="Node2D" parent="Sounds"]
+
+editor/display_folded = true
+
+[node name="Track1" type="StreamPlayer" parent="Sounds/Music" groups=[ "MusicSounds" ]]
+
+stream/stream = ExtResource( 11 )
+stream/play = false
+stream/loop = false
+stream/volume_db = 0.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[node name="Track2" type="StreamPlayer" parent="Sounds/Music" groups=[ "MusicSounds" ]]
+
+stream/stream = ExtResource( 12 )
+stream/play = false
+stream/loop = false
+stream/volume_db = 0.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[node name="Lights" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="GlobalNightLight" type="Light2D" parent="Lights"]
+
+transform/pos = Vector2( 1599.43, 1382.23 )
+transform/scale = Vector2( 0.901426, 1.62167 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 50.0
+color = Color( 1, 1, 1, 1 )
+energy = 0.5
+mode = 1
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="StreetLights" type="Node2D" parent="Lights"]
+
+editor/display_folded = true
+
+[node name="StreetLight1" type="Light2D" parent="Lights/StreetLights"]
+
+editor/display_folded = true
+transform/pos = Vector2( 54.1025, 2515.34 )
+transform/scale = Vector2( 1.68955, 2.92982 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.7
+color = Color( 0.623529, 0.878431, 0.980392, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="Light2D8" type="Light2D" parent="Lights/StreetLights/StreetLight1"]
+
+transform/pos = Vector2( 9.93946, -27.7395 )
+transform/scale = Vector2( 0.163064, 0.233517 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="StreetLight2" type="Light2D" parent="Lights/StreetLights"]
+
+editor/display_folded = true
+transform/pos = Vector2( 583.693, 2346.87 )
+transform/scale = Vector2( 1.68955, 2.92982 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.7
+color = Color( 0.623529, 0.878431, 0.980392, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="Light2D7" type="Light2D" parent="Lights/StreetLights/StreetLight2"]
+
+transform/pos = Vector2( -0.374611, -25.4905 )
+transform/scale = Vector2( 0.163064, 0.233517 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="StreetLight3" type="Light2D" parent="Lights/StreetLights"]
+
+editor/display_folded = true
+transform/pos = Vector2( 572.164, 2046.07 )
+transform/scale = Vector2( 1.68955, 2.92982 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.7
+color = Color( 0.623529, 0.878431, 0.980392, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="Light2D6" type="Light2D" parent="Lights/StreetLights/StreetLight3"]
+
+transform/pos = Vector2( -4.86358, -27.9494 )
+transform/scale = Vector2( 0.163064, 0.233517 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="StreetLight4" type="Light2D" parent="Lights/StreetLights"]
+
+editor/display_folded = true
+transform/pos = Vector2( 1177.81, 1855.87 )
+transform/scale = Vector2( 1.44659, 2.17148 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.7
+color = Color( 0.623529, 0.878431, 0.980392, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="Light2D5" type="Light2D" parent="Lights/StreetLights/StreetLight4"]
+
+transform/pos = Vector2( 0.465454, -30.6875 )
+transform/scale = Vector2( 0.190451, 0.315067 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="StreetLight5" type="Light2D" parent="Lights/StreetLights"]
+
+editor/display_folded = true
+transform/pos = Vector2( 1235.56, 1556.88 )
+transform/scale = Vector2( 1.68955, 2.92982 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.7
+color = Color( 0.623529, 0.878431, 0.980392, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="Light2D4" type="Light2D" parent="Lights/StreetLights/StreetLight5"]
+
+transform/pos = Vector2( -42.9142, -17.0391 )
+transform/scale = Vector2( 0.163064, 0.233517 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="StreetLight6" type="Light2D" parent="Lights/StreetLights"]
+
+editor/display_folded = true
+transform/pos = Vector2( 1472.24, 1383.94 )
+transform/scale = Vector2( 1.68955, 2.92982 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.7
+color = Color( 0.623529, 0.878431, 0.980392, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="Light2D3" type="Light2D" parent="Lights/StreetLights/StreetLight6"]
+
+transform/pos = Vector2( -22.5007, -37.7979 )
+transform/scale = Vector2( 0.163064, 0.233517 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="StreetLight7" type="Light2D" parent="Lights/StreetLights"]
+
+editor/display_folded = true
+transform/pos = Vector2( 1743.99, 1436.6 )
+transform/scale = Vector2( 1.68955, 2.92982 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.7
+color = Color( 0.623529, 0.878431, 0.980392, 1 )
+energy = 0.8
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="Light2D2" type="Light2D" parent="Lights/StreetLights/StreetLight7"]
+
+transform/pos = Vector2( 5.36332, -23.2561 )
+transform/scale = Vector2( 0.163064, 0.233517 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="StreetLight8" type="Light2D" parent="Lights/StreetLights"]
+
+editor/display_folded = true
+transform/pos = Vector2( 1858.73, 1856.11 )
+transform/scale = Vector2( 1.57862, 2.12255 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.7
+color = Color( 0.623529, 0.878431, 0.980392, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="Light2D1" type="Light2D" parent="Lights/StreetLights/StreetLight8"]
+
+transform/pos = Vector2( 13.0676, -40.1144 )
+transform/scale = Vector2( 0.174523, 0.32233 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="StreetLight9" type="Light2D" parent="Lights/StreetLights"]
+
+editor/display_folded = true
+transform/pos = Vector2( 2213.11, 2091.9 )
+transform/scale = Vector2( 1.93527, 3.31328 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.7
+color = Color( 0.624283, 0.880291, 0.980469, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 1, 1, 1, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="Light2D" type="Light2D" parent="Lights/StreetLights/StreetLight9"]
+
+transform/pos = Vector2( 0.302829, -20.4339 )
+transform/scale = Vector2( 0.14236, 0.206491 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="StreetLight10" type="Light2D" parent="Lights/StreetLights"]
+
+editor/display_folded = true
+transform/pos = Vector2( 2519.26, 2449.36 )
+transform/scale = Vector2( 1.68955, 2.92982 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.7
+color = Color( 0.623529, 0.878431, 0.980392, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="Light2D1" type="Light2D" parent="Lights/StreetLights/StreetLight10"]
+
+transform/pos = Vector2( -34.2392, -21.1054 )
+transform/scale = Vector2( 0.163064, 0.233517 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="StreetLight11" type="Light2D" parent="Lights/StreetLights"]
+
+editor/display_folded = true
+transform/pos = Vector2( 1775.93, 1054.62 )
+transform/scale = Vector2( 1.68955, 2.92982 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.7
+color = Color( 0.623529, 0.878431, 0.980392, 1 )
+energy = 1.4
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="Light2D5" type="Light2D" parent="Lights/StreetLights/StreetLight11"]
+
+transform/pos = Vector2( -7.57566, -21.4879 )
+transform/scale = Vector2( 0.163064, 0.233517 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="StreetLight12" type="Light2D" parent="Lights/StreetLights"]
+
+editor/display_folded = true
+transform/pos = Vector2( 2219.84, 786.365 )
+transform/scale = Vector2( 1.68955, 2.92982 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.4
+color = Color( 0.623529, 0.878431, 0.980392, 1 )
+energy = 1.4
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="Light2D4" type="Light2D" parent="Lights/StreetLights/StreetLight12"]
+
+transform/pos = Vector2( 1.67601, -3.79797 )
+transform/scale = Vector2( 0.163064, 0.233517 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="StreetLight13" type="Light2D" parent="Lights/StreetLights"]
+
+editor/display_folded = true
+transform/pos = Vector2( 2307.17, 353.343 )
+transform/scale = Vector2( 1.68955, 2.92982 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.7
+color = Color( 0.623529, 0.878431, 0.980392, 1 )
+energy = 1.4
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="Light2D3" type="Light2D" parent="Lights/StreetLights/StreetLight13"]
+
+transform/pos = Vector2( -35.2265, -28.973 )
+transform/scale = Vector2( 0.163064, 0.233517 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="StreetLight14" type="Light2D" parent="Lights/StreetLights"]
+
+editor/display_folded = true
+transform/pos = Vector2( 2547.71, 142.186 )
+transform/scale = Vector2( 1.68955, 2.92982 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.7
+color = Color( 0.623529, 0.878431, 0.980392, 1 )
+energy = 1.4
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="Light2D2" type="Light2D" parent="Lights/StreetLights/StreetLight14"]
+
+transform/pos = Vector2( 1.64543, -18.1493 )
+transform/scale = Vector2( 0.163064, 0.233517 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="StreetLight15" type="Light2D" parent="Lights/StreetLights"]
+
+editor/display_folded = true
+transform/pos = Vector2( 1023.53, 506.718 )
+transform/scale = Vector2( 1.68955, 2.92982 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.7
+color = Color( 0.623529, 0.878431, 0.980392, 1 )
+energy = 1.4
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="Light2D2" type="Light2D" parent="Lights/StreetLights/StreetLight15"]
+
+transform/pos = Vector2( 1.64543, -18.1493 )
+transform/scale = Vector2( 0.163064, 0.233517 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TempleLights" type="Node2D" parent="Lights"]
+
+editor/display_folded = true
+
+[node name="TempleLights1" type="Light2D" parent="Lights/TempleLights"]
+
+transform/pos = Vector2( 1128.6, 1081.82 )
+transform/scale = Vector2( 0.547248, 1.18358 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TempleLights2" type="Light2D" parent="Lights/TempleLights"]
+
+transform/pos = Vector2( 972.806, 1227.07 )
+transform/scale = Vector2( 0.298653, 1.91527 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TempleLights3" type="Light2D" parent="Lights/TempleLights"]
+
+transform/pos = Vector2( 917.754, 1197.29 )
+transform/scale = Vector2( 0.228145, 1.91527 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TempleLights4" type="Light2D" parent="Lights/TempleLights"]
+
+transform/pos = Vector2( 869.019, 1168.41 )
+transform/scale = Vector2( 0.228145, 1.91527 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TempleLights5" type="Light2D" parent="Lights/TempleLights"]
+
+transform/pos = Vector2( 719.933, 1126.36 )
+transform/scale = Vector2( 0.228145, 1.18118 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TempleLights6" type="Light2D" parent="Lights/TempleLights"]
+
+transform/pos = Vector2( 667.843, 1097.02 )
+transform/scale = Vector2( 0.228145, 1.18118 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TempleLights7" type="Light2D" parent="Lights/TempleLights"]
+
+transform/pos = Vector2( 619.345, 1067.68 )
+transform/scale = Vector2( 0.228145, 1.18118 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TempleLights8" type="Light2D" parent="Lights/TempleLights"]
+
+transform/pos = Vector2( 461.173, 912.549 )
+transform/scale = Vector2( 0.116361, 1.20652 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TempleLights9" type="Light2D" parent="Lights/TempleLights"]
+
+transform/pos = Vector2( 695.912, 823.191 )
+transform/scale = Vector2( 0.219848, 2.00203 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TempleLights10" type="Light2D" parent="Lights/TempleLights"]
+
+transform/pos = Vector2( 726.447, 841.752 )
+transform/scale = Vector2( 0.219848, 2.00203 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TempleLights11" type="Light2D" parent="Lights/TempleLights"]
+
+transform/pos = Vector2( 756.983, 860.911 )
+transform/scale = Vector2( 0.219848, 2.00203 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="ThunderLights" type="Node2D" parent="Lights"]
+
+editor/display_folded = true
+
+[node name="ThunderLight1" type="Light2D" parent="Lights/ThunderLights"]
+
+visibility/visible = false
+transform/pos = Vector2( 799.905, 1012 )
+transform/scale = Vector2( 11.3262, 5.41765 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 0.300842, 0.626784, 0.726562, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="ThunderLight2" type="Light2D" parent="Lights/ThunderLights"]
+
+visibility/visible = false
+transform/pos = Vector2( 597.691, 1552.75 )
+transform/scale = Vector2( 11.3262, 5.41765 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 0.298039, 0.623529, 0.72549, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="ThunderLight3" type="Light2D" parent="Lights/ThunderLights"]
+
+visibility/visible = false
+transform/pos = Vector2( 1197.52, 2059.43 )
+transform/scale = Vector2( 11.3262, 5.41765 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 0.298039, 0.623529, 0.72549, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="ThunderLight4" type="Light2D" parent="Lights/ThunderLights"]
+
+visibility/visible = false
+transform/pos = Vector2( 1838.24, 1598.2 )
+transform/scale = Vector2( 11.3262, 5.41765 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 0.294118, 0.619608, 0.721569, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="ThunderLight5" type="Light2D" parent="Lights/ThunderLights"]
+
+visibility/visible = false
+transform/pos = Vector2( 2213.14, 1982.18 )
+transform/scale = Vector2( 11.3262, 5.41765 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 0.298039, 0.623529, 0.72549, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="ThunderLight6" type="Light2D" parent="Lights/ThunderLights"]
+
+visibility/visible = false
+transform/pos = Vector2( 2433.53, 1182.41 )
+transform/scale = Vector2( 11.3262, 5.41765 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 0.298039, 0.623529, 0.72549, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="Timer" type="Timer" parent="Lights/ThunderLights"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="TowerLamps" type="Node2D" parent="Lights"]
+
+editor/display_folded = true
+
+[node name="TowerLamp1" type="Light2D" parent="Lights/TowerLamps"]
+
+transform/pos = Vector2( 238.003, 2269.99 )
+transform/scale = Vector2( 0.471656, 1.92008 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TowerLamp2" type="Light2D" parent="Lights/TowerLamps"]
+
+transform/pos = Vector2( 111.939, 2203.67 )
+transform/scale = Vector2( 0.269728, 0.792339 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TowerLamp3" type="Light2D" parent="Lights/TowerLamps"]
+
+transform/pos = Vector2( 18.3053, 2127.59 )
+transform/scale = Vector2( 0.12495, 0.761863 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TowerLamp4" type="Light2D" parent="Lights/TowerLamps"]
+
+transform/pos = Vector2( 309.203, 2063.95 )
+transform/scale = Vector2( 0.0449405, 0.418972 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TowerLamp5" type="Light2D" parent="Lights/TowerLamps"]
+
+transform/pos = Vector2( 1948.75, 483.111 )
+transform/scale = Vector2( -0.443263, -2.24881 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TowerLamp6" type="Light2D" parent="Lights/TowerLamps"]
+
+transform/pos = Vector2( 2076.82, 421.543 )
+transform/scale = Vector2( -0.24907, -0.645636 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TowerLamp7" type="Light2D" parent="Lights/TowerLamps"]
+
+transform/pos = Vector2( 2169.49, 342.38 )
+transform/scale = Vector2( -0.118201, -0.586535 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="TowerLamp8" type="Light2D" parent="Lights/TowerLamps"]
+
+transform/pos = Vector2( 1879.05, 281.589 )
+transform/scale = Vector2( -0.0548779, -0.324797 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLights" type="Node2D" parent="Lights"]
+
+editor/display_folded = true
+
+[node name="HouseLight1" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 682.042, 1858.69 )
+transform/scale = Vector2( 0.18656, 0.387854 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight2" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 799.323, 1854.49 )
+transform/scale = Vector2( 0.158756, 0.600168 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight3" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 851.411, 1822.78 )
+transform/scale = Vector2( 0.158756, 0.600168 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight4" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 1592.52, 2303.62 )
+transform/scale = Vector2( 0.394064, 0.643918 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight5" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 2005.06, 1808.29 )
+transform/scale = Vector2( 0.394064, 0.643918 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight6" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 1037.69, 313.22 )
+transform/scale = Vector2( 0.394064, 0.643918 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight7" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 1739.91, 2301.14 )
+transform/scale = Vector2( 0.41136, 0.58551 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight8" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 2150.59, 1806.86 )
+transform/scale = Vector2( 0.41136, 0.58551 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight9" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 1185.91, 311.817 )
+transform/scale = Vector2( 0.41136, 0.58551 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight10" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 2300.08, 1717.59 )
+transform/scale = Vector2( 0.41136, 0.58551 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight11" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 1335.43, 224.525 )
+transform/scale = Vector2( 0.41136, 0.58551 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight12" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 2009.26, 2672.51 )
+transform/scale = Vector2( 0.328666, 0.536595 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight13" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 2238.56, 2620.26 )
+transform/scale = Vector2( 0.31895, 0.474803 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight14" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 2293.75, 2585.96 )
+transform/scale = Vector2( 0.323287, 0.495976 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight15" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 2429.6, 2150.5 )
+transform/scale = Vector2( 0.340797, 0.46759 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight16" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 1213.41, 724.343 )
+transform/rot = 3.86649
+transform/scale = Vector2( 0.340797, 0.46759 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight17" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 2655.99, 2097.58 )
+transform/scale = Vector2( 0.33485, 0.460561 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight18" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 1436.96, 672.178 )
+transform/scale = Vector2( 0.33485, 0.460561 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight19" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 1495.85, 636.341 )
+transform/scale = Vector2( 0.33485, 0.460561 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight20" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 2713.23, 2062.83 )
+transform/scale = Vector2( 0.33485, 0.460561 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="HouseLight21" type="Light2D" parent="Lights/HouseLights"]
+
+transform/pos = Vector2( 1886.76, 2212.69 )
+transform/scale = Vector2( 0.386536, 0.558235 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="GameEffects" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="Rain" type="Node2D" parent="GameEffects"]
+
+[node name="Rain1" type="Particles2D" parent="GameEffects/Rain" groups=[ "Rain" ]]
+
+transform/pos = Vector2( 466.362, -235.465 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 14 )
+params/direction = 0.0
+params/spread = 60.0
+params/linear_velocity = 100.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="Rain2" type="Particles2D" parent="GameEffects/Rain" groups=[ "Rain" ]]
+
+transform/pos = Vector2( 1071.84, -243.875 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 14 )
+params/direction = 0.0
+params/spread = 60.0
+params/linear_velocity = 100.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="Rain3" type="Particles2D" parent="GameEffects/Rain" groups=[ "Rain" ]]
+
+transform/pos = Vector2( 1870.74, -264.899 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 14 )
+params/direction = 0.0
+params/spread = 60.0
+params/linear_velocity = 100.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="Rain4" type="Particles2D" parent="GameEffects/Rain" groups=[ "Rain" ]]
+
+transform/pos = Vector2( 2551.91, -277.513 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 14 )
+params/direction = 0.0
+params/spread = 60.0
+params/linear_velocity = 100.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="RainBig1" type="Particles2D" parent="GameEffects/Rain" groups=[ "Rain", "RainBig" ]]
+
+transform/pos = Vector2( 2127.23, -521.388 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 15 )
+params/direction = 0.0
+params/spread = 60.0
+params/linear_velocity = 40.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="RainBig2" type="Particles2D" parent="GameEffects/Rain" groups=[ "Rain", "RainBig" ]]
+
+transform/pos = Vector2( 1459.24, -528.204 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 15 )
+params/direction = 0.0
+params/spread = 60.0
+params/linear_velocity = 40.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="RainBig3" type="Particles2D" parent="GameEffects/Rain" groups=[ "Rain", "RainBig" ]]
+
+transform/pos = Vector2( 754.903, -530.476 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 15 )
+params/direction = 0.0
+params/spread = 60.0
+params/linear_velocity = 40.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="RainGiga1" type="Particles2D" parent="GameEffects/Rain" groups=[ "Rain", "RainGiga" ]]
+
+transform/pos = Vector2( 1136.61, -809.941 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 16 )
+params/direction = 0.0
+params/spread = 90.0
+params/linear_velocity = 50.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="RainGiga2" type="Particles2D" parent="GameEffects/Rain" groups=[ "Rain", "RainGiga" ]]
+
+transform/pos = Vector2( 2009.09, -784.948 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 16 )
+params/direction = 0.0
+params/spread = 90.0
+params/linear_velocity = 50.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="Critters" type="Node2D" parent="."]
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="NPC1" parent="NPCs" instance=ExtResource( 17 )]
+
+[node name="NPC2" parent="NPCs" instance=ExtResource( 17 )]
+
+[node name="NPC3" parent="NPCs" instance=ExtResource( 17 )]
+
+[node name="NPC4" parent="NPCs" instance=ExtResource( 17 )]
+
+[node name="NPC5" parent="NPCs" instance=ExtResource( 17 )]
+
+[node name="NPC6" parent="NPCs" instance=ExtResource( 17 )]
+
+[node name="NPC7" parent="NPCs" instance=ExtResource( 17 )]
+
+[node name="NPC8" parent="NPCs" instance=ExtResource( 17 )]
+
+[node name="NPC10" parent="NPCs" instance=ExtResource( 17 )]
+
+[node name="NPC11" parent="NPCs" instance=ExtResource( 17 )]
+
+[node name="NPC22" parent="NPCs" instance=ExtResource( 17 )]
+
+[node name="WorldEvents" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="DialogManager" type="Node2D" parent="WorldEvents"]
+
+script/script = ExtResource( 18 )
+
+[node name="QuestManager" type="Node2D" parent="WorldEvents"]
+
+script/script = ExtResource( 19 )
+
+[node name="SceneChange" type="Node2D" parent="WorldEvents"]
+
+script/script = ExtResource( 20 )
+
+[node name="Iss'mor" type="Area2D" parent="WorldEvents/SceneChange"]
+
+visibility/visible = false
+input/pickable = true
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 38.8351, 0, 0, 16.3677, 2613.36, 59.1471 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldEvents/SceneChange/Iss'mor"]
+
+transform/pos = Vector2( 2613.36, 59.1471 )
+transform/scale = Vector2( 38.8351, 16.3677 )
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+__meta__ = { "_edit_lock_":true }
+
+[node name="Chapel" type="Area2D" parent="WorldEvents/SceneChange"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( 3.46853, 0, 0, 4.64485, 1134.53, 1268.97 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldEvents/SceneChange/Chapel"]
+
+transform/pos = Vector2( 1134.53, 1268.97 )
+transform/scale = Vector2( 3.46853, 4.64485 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="House1" type="Area2D" parent="WorldEvents/SceneChange"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 6 )
+shapes/0/transform = Matrix32( 0.888691, 0, 0, 1.08423, 2229.09, 1793.85 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldEvents/SceneChange/House1"]
+
+transform/pos = Vector2( 2229.09, 1793.85 )
+transform/scale = Vector2( 0.888691, 1.08423 )
+shape = SubResource( 6 )
+trigger = false
+_update_shape_index = 0
+
+[node name="AreaTrigger" type="Node2D" parent="WorldEvents"]
+
+editor/display_folded = true
+visibility/visible = false
+script/script = ExtResource( 21 )
+
+[node name="MarketDiscovery" type="Area2D" parent="WorldEvents/AreaTrigger"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 6.30488, 0, 0, 29.0879, 1502.07, 1527.22 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldEvents/AreaTrigger/MarketDiscovery"]
+
+transform/pos = Vector2( 1502.07, 1527.22 )
+transform/scale = Vector2( 6.30488, 29.0879 )
+shape = SubResource( 7 )
+trigger = false
+_update_shape_index = 0
+
+[node name="NavigationSurfaces" type="Node2D" parent="."]
+
+editor/display_folded = true
+visibility/visible = false
+
+[node name="PlayerNavigation" type="Navigation2D" parent="NavigationSurfaces"]
+
+script/script = ExtResource( 22 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="NavigationSurfaces/PlayerNavigation"]
+
+navpoly = SubResource( 8 )
+enabled = true
+
+[node name="UIAndCameraNavigation" type="Navigation2D" parent="NavigationSurfaces"]
+
+visibility/visible = false
+script/script = ExtResource( 23 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="NavigationSurfaces/UIAndCameraNavigation"]
+
+navpoly = SubResource( 8 )
+enabled = true
+
+[node name="PlayerAndUI" parent="." instance=ExtResource( 24 )]
+
+[node name="NPC_Positions" type="Node2D" parent="."]
+
+editor/display_folded = true
+visibility/visible = false
+
+[node name="NPC1" type="Sprite" parent="NPC_Positions"]
+
+transform/pos = Vector2( 1371, 1324 )
+z/z = 2
+texture = ExtResource( 25 )
+
+[node name="NPC2" type="Sprite" parent="NPC_Positions"]
+
+transform/pos = Vector2( 1287, 1466 )
+texture = ExtResource( 25 )
+
+[node name="NPC3" type="Sprite" parent="NPC_Positions"]
+
+transform/pos = Vector2( 1205, 1597 )
+texture = ExtResource( 25 )
+
+[node name="NPC4" type="Sprite" parent="NPC_Positions"]
+
+transform/pos = Vector2( 1745, 1508 )
+z/z = 100
+texture = ExtResource( 25 )
+
+[node name="NPC5" type="Sprite" parent="NPC_Positions"]
+
+transform/pos = Vector2( 1537, 1557 )
+texture = ExtResource( 25 )
+
+[node name="NPC6" type="Sprite" parent="NPC_Positions"]
+
+transform/pos = Vector2( 1354.8, 1636.55 )
+texture = ExtResource( 25 )
+
+[node name="NPC7" type="Sprite" parent="NPC_Positions"]
+
+transform/pos = Vector2( 2643, 2389 )
+texture = ExtResource( 25 )
+
+[node name="NPC8" type="Sprite" parent="NPC_Positions"]
+
+transform/pos = Vector2( 2618, 2432 )
+texture = ExtResource( 25 )
+
+[node name="NPC9" type="Sprite" parent="NPC_Positions"]
+
+transform/pos = Vector2( 178, 1979 )
+texture = ExtResource( 25 )
+
+[node name="NPC10" type="Sprite" parent="NPC_Positions"]
+
+transform/pos = Vector2( 202, 2342 )
+texture = ExtResource( 25 )
+
+[node name="NPC11" type="Sprite" parent="NPC_Positions"]
+
+transform/pos = Vector2( 2104, 602 )
+texture = ExtResource( 25 )
+
+[node name="NPC12" type="Sprite" parent="NPC_Positions"]
+
+transform/pos = Vector2( 2133, 108 )
+texture = ExtResource( 25 )
+
+[connection signal="timeout" from="Sounds/WorldSounds/TimedSounds/ThunderRumbling/Timer" to="." method="_on_ThunderRumblig_Timer_timeout"]
+
+[connection signal="timeout" from="Sounds/WorldSounds/TimedSounds/Thunder/Timer" to="." method="_on_Thunder_Timer_timeout"]
+
+[connection signal="finished" from="Sounds/Music/Track1" to="Sounds" method="_Signal_StepMusicTrack"]
+
+[connection signal="finished" from="Sounds/Music/Track2" to="Sounds" method="_Signal_StepMusicTrack"]
+
+[connection signal="timeout" from="Lights/ThunderLights/Timer" to="." method="_on_ThunderLight_Timer_timeout"]
+
+[connection signal="body_enter" from="WorldEvents/SceneChange/Iss'mor" to="WorldEvents/SceneChange" method="_on_Issmor_body_enter"]
+
+[connection signal="body_exit" from="WorldEvents/SceneChange/Iss'mor" to="WorldEvents/SceneChange" method="_on_Issmor_body_exit"]
+
+[connection signal="body_enter" from="WorldEvents/SceneChange/Chapel" to="WorldEvents/SceneChange" method="_on_Chapel_body_enter"]
+
+[connection signal="body_exit" from="WorldEvents/SceneChange/Chapel" to="WorldEvents/SceneChange" method="_on_Chapel_body_exit"]
+
+[connection signal="body_enter" from="WorldEvents/SceneChange/House1" to="WorldEvents/SceneChange" method="_on_House1_body_enter"]
+
+[connection signal="body_exit" from="WorldEvents/SceneChange/House1" to="WorldEvents/SceneChange" method="_on_House1_body_exit"]
+
+[connection signal="body_enter" from="WorldEvents/AreaTrigger/MarketDiscovery" to="WorldEvents/AreaTrigger" method="_on_MarketDiscovery_body_enter"]
+
+

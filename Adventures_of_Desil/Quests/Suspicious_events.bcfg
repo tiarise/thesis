@@ -1,0 +1,32 @@
+[I. Strange reports]
+
+StartType ="Talk"
+StartTriggerLine = "So please if you hear anything suspicious report to me immediately!"
+StartNPC="Eyner"
+
+CompletionType="Talk"
+CompleteNPC="Fex"
+CompleteKeyLine="Have I? Yestoday night someone stole one of my crates while I was harvesting. My precious!"
+
+Description="I should question the villagers if they had something stolen."
+CompletionText="I found a witness named Fex."
+
+Priority="Primary"
+RewardExperience=15
+
+[II. Eyewitness]
+
+StartType ="Talk"
+StartTriggerLine = "Have I? Yestoday night someone stole one of my crates while I was harvesting. My precious!"
+StartNPC="Fex"
+
+CompletionType="Talk"
+CompleteNPC="Eyner"
+CompleteKeyLine="That's enyought for me. Please go to Iss'mor and check on the harvesting villagers to see if they are safe. And take this armor, it is dangerous to go alone!"
+
+Description="I found an eyewitness, Fex, I should report to captain Eyner."
+CompletionText="I sucessfully reported back to captain Eyner."
+
+Priority="Primary"
+RewardExperience=5
+RewardItems=["IronHearth LeatherChest"]

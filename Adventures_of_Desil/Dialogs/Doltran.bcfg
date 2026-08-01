@@ -1,0 +1,46 @@
+[ID-1]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="This year's harvest is probably the best in the last few years! May I interest you in anything?"
+Leads=[ "ID-2" ]
+
+
+[ID-2]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="No thank you. But you may help me nevertheless."
+Answer="Shame... What do you need?" 
+Leads=[ "ID-4", "ID-5" ]
+
+[ID-4]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Have you seen anything unusual here?"
+Answer="You mean other than the awful weather and the weird hag not so far from here? No, I haven't." 
+Leads=[ "ID-END" ]
+RemovesQuery=["Thank you for everything."]
+
+[ID-5]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="What is at the end of this road?"
+Answer="This road leads deep into Iss'mor. A big forest with many dangers, if you ask what is beyond that, I'm not sure." 
+Leads=[ "ID-END" ]
+RemovesQuery=["Thank you for everything."]
+
+[ID-END]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Thank you for everything."
+Answer="Please be careful. This place is dangerous."
+RemovesQuery=["What is at the end of this road?","Have you seen anything unusual here?"]

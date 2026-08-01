@@ -1,0 +1,25 @@
+[ID-1]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Hello, Desil. Your father and I are just preparing for the big event."
+Leads=[ "ID-2"]
+
+
+[ID-2]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Hey Roqzen. So much stuff here."
+Answer="I have to beat my own record this time, I will be the best merchant again."
+Leads=[ "ID-END"]
+
+[ID-END]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Good luck, I will check on father."
+Answer="I don't need luck, I need the rain to stop..."

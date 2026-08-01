@@ -1,0 +1,52 @@
+[ID-1]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Hey Desil, I haven't seen you today."
+Leads=[ "ID-2"]
+
+
+[ID-2]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="I was out in the fields, learning for my exam."
+Answer="Ah yes, the mage entry exam. And how are you feeling?"
+Leads=[ "ID-3"]
+
+[ID-3]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Well, I learned what I could, but we will see."
+Answer="This is a great privilage to have, nobody in three hundred years have had this chance. You must be talented."
+Leads=[ "ID-4"]
+
+[ID-4]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="I had talent for magic since I was born, but I thought I don't have what it takes to get here."
+Answer="Belkor coached you and gave you lessons in his spare time for a reason, I presume."
+Leads=[ "ID-5"]
+
+[ID-5]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Yes, we practise each day, to get me as prepared as possible. Today's session will start soon."
+Answer="Off you go then. Take care!"
+Leads=[ "ID-END"]
+
+[ID-END]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Bye! Have a nice day."
+Answer="You too."

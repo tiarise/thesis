@@ -1,0 +1,107 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://Scripts/IntroScene.gd" type="Script" id=1]
+[ext_resource path="res://Animations/Texts/TextFadeIn.tres" type="Animation" id=2]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "TextFadeOut"
+length = 3.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 3 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 1.0, 0.0 ] }
+
+[node name="SceneRoot" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="BackgroundLayers" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite" parent="BackgroundLayers"]
+
+centered = false
+
+[node name="Sounds" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="WorldSounds" type="Node2D" parent="Sounds"]
+
+[node name="MiscSounds" type="Node2D" parent="Sounds"]
+
+[node name="Music" type="Node2D" parent="Sounds"]
+
+[node name="Text" type="Label" parent="." groups=[ "MainTextsFontType" ]]
+
+visibility/opacity = 0.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 14.0
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Text"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/TextFadeIn = ExtResource( 2 )
+anims/TextFadeOut = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="Tooltip" type="Label" parent="." groups=[ "MainTextsFontType" ]]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 14.0
+text = "Press space to skip..."
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="TextSwitchTimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="TextSwitchTimer1" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="SupportTimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[connection signal="timeout" from="TextSwitchTimer" to="." method="PlayTextFade"]
+
+[connection signal="timeout" from="SupportTimer" to="." method="_on_SupportTimer_timeout"]
+
+

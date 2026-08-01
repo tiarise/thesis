@@ -1,0 +1,32 @@
+[I. Find the co-worker]
+
+StartType ="Talk"
+StartTriggerLine = "Soon I will head back to town, I will check on him for you."
+StartNPC="Nolt"
+
+CompletionType="Talk"
+CompleteNPC="Bozz"
+CompleteKeyLine="Funny. Aren't you the one that Nolt is looking for?"
+
+Description="I need to find a man named Bozz."
+CompletionText="I found Bozz out in the northern fields."
+
+Priority="Secondary"
+RewardExperience=20
+
+[II. Convince Bozz to return]
+
+StartType ="Talk"
+StartTriggerLine = "First you have to catch me!"
+StartNPC="Nolt"
+
+CompletionType="Talk"
+CompleteNPC="Bozz"
+CompleteKeyLine="Okay, okay! You don't have to be like that. I'm going..."
+
+Description="I need to convince Bozz to help Nolt."
+CompletionText="I forced Bozz to help Nolt."
+
+Priority="Secondary"
+RewardExperience=25
+RewardItems=["SoulFeast Sword"]

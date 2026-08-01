@@ -1,0 +1,28 @@
+[The_Market]
+
+StartType ="AlwaysOn"
+
+CompletionType="AreaTrigger"
+PopupText="Market Discovered!"
+
+Description="I should check out the market."
+CompletionText="I have reached the main square of Cesferan."
+
+Priority="Secondary"
+RewardExperience=5
+
+[Find father]
+
+StartType ="AlwaysOn"
+
+CompletionType="Talk"
+CompleteNPC="Ulgrel"
+CompleteKeyLine="Keep safe! Oh, and here's something I wanted to give you. If you are strong enyought you will be able to use it."
+
+Description="Father should be somewhere around the market."
+CompletionText="I found Father."
+RewardExperience=5
+RewardItems=["ArcaneInfused LeatherGloves"]
+
+
+Priority="Secondary"

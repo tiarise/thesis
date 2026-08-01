@@ -1,0 +1,104 @@
+[ID-1]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Hello there!"
+Leads=[ "ID-10"]
+
+[ID-10]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Hello."
+Answer="Nice wheather." 
+Leads=[ "ID-22"]
+
+[ID-22]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="I don't know how the villagers will light the fire like this."
+Leads=[ "ID-11"]
+
+[ID-11]
+
+Conditional=true
+Reaction=true
+Battle=false
+Condition_Type="QuestIsComplete"
+Condition_Name="II. Convince Bozz to return"
+Condition_Success_Leads=["ID-12"]
+Condition_Fail_Leads=["ID-13"]
+
+[ID-12]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Nevertheless thanks for the help! Man, he is strong... We already finished. I'm just packing up."
+Leads=[ "ID-END"]
+
+[ID-13]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="I told them. Nobody listened."
+Leads=[ "ID-3"]
+
+
+[ID-3]
+
+Conditional=true
+Reaction=false
+Battle=false
+Query="What is your job here?"
+Condition_Type="QuestIsActive"
+Condition_Name="I. Find the co-worker"
+Condition_Success_Leads=["ID-7"]
+Condition_Fail_Leads=["ID-6"]
+
+[ID-6]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="I was sent there to gather wood for the festival fire. How will they light it in this weather? Now that's a fun question. Well, whatever, it seems it's only I who takes this job seriously around here."
+Leads=[ "ID-8" ]
+
+[ID-7]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="I already told you... And if you manage to find Bozz give him a message: GET HERE NOW!."
+Leads=[ "ID-END" ]
+
+[ID-8]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Should you be doing this alone?"
+Answer="Well no, a lad named Bozz should be here by now. He should be in Cesferan somewhere." 
+Leads=[ "ID-9"]
+
+[ID-9]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Soon I will head back to town, I will check on him for you."
+Answer="That would be appreciated." 
+Leads=[ "ID-END"]
+
+[ID-END]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Later!"
+Answer="Work work!" 

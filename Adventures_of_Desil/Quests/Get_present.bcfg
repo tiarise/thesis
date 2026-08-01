@@ -1,0 +1,48 @@
+[I. Find a present]
+
+StartType ="Talk"
+StartTriggerLine = "I will find a present, don't worry."
+StartNPC="Toliam"
+
+CompletionType="Talk"
+CompleteNPC="Velrath"
+CompleteKeyLine="May I buy that doll? It would be a present."
+
+Description="I have to find a present for Toliam's daughter."
+CompletionText="I managed to find a present."
+
+Priority="Secondary"
+RewardExperience=15
+
+[II. Fight for the doll]
+
+StartType ="Talk"
+StartTriggerLine = "That's sweet. Let's make this interesting. I know you are preparing for a magic exam. If you can beat me, then the doll is yours."
+StartNPC="Velrath"
+
+CompletionType="Talk"
+CompleteNPC="Velrath"
+CompleteKeyLine="You are suprisingly fast! Damn, I'm too old for this."
+
+Description="Velrath wants me to challange him for the doll."
+CompletionText="I won over Velrath for the doll."
+
+Priority="Secondary"
+RewardExperience=20
+
+[III. Give the doll to Toliam]
+
+StartType ="Talk"
+StartTriggerLine = "You are suprisingly fast! Damn, I'm too old for this."
+StartNPC="Velrath"
+
+CompletionType="Talk"
+CompleteNPC="Toliam"
+CompleteKeyLine="Yes, I found this doll!"
+
+Description="I won, so I got the doll, I just have to give it to Toliam."
+CompletionText="I gave Toliam the doll."
+
+Priority="Secondary"
+RewardExperience=5
+RewardItems=["DireWood Wand"]

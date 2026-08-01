@@ -1,0 +1,6 @@
+[ID-END]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="This person seems busy and pays you no attention."

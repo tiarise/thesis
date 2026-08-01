@@ -1,0 +1,231 @@
+[ID-1]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="You must be Desil."
+Leads=[ "ID-2"]
+
+
+[ID-2]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="That is correct."
+Answer="I've been waiting for you."
+Leads=[ "ID-3"]
+
+[ID-3]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Belkor says you have pontential. So far you only trained with him. That is about to change."
+Leads=[ "ID-4" ]
+
+[ID-4]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Are you Gywenne?"
+Answer="Correct. Now it's your turn to answer my questions."
+Leads=[ "ID-5"]
+
+[ID-5]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="A man has 4 daughters. Each of his daughters has a brother. How many children does the man have?"
+Leads=[ "ID-6","ID-7"]
+
+[ID-6]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="8"
+Answer="That is not correct."
+Leads=[ "ID-8"]
+RemovesQuery=["5"]
+
+[ID-7]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="5"
+Answer="That is correct."
+Leads=[ "ID-9"]
+RemovesQuery=["8"]
+
+
+[ID-9]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Next question: How many bricks does it take to complete a building made of brick?"
+Leads=[ "ID-10","ID-11","ID-12" ]
+
+[ID-10]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Depends"
+Answer="That is not correct."
+Leads=[ "ID-8"]
+RemovesQuery=["1","0"]
+
+[ID-11]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="1"
+Answer="That is correct."
+Leads=[ "ID-13"]
+RemovesQuery=["Depends","0"]
+
+[ID-12]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="0"
+Answer="That is not correct."
+Leads=[ "ID-8"]
+RemovesQuery=["Depends","1"]
+
+[ID-13]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Impressive! Your mind is clear, and you are quite quick-witted."
+Leads=[ "ID-14"]
+
+
+[ID-14]
+
+Conditional=true
+Reaction=true
+Battle=false
+Condition_Type="QuestIsComplete"
+Condition_Name="I. The curse"
+Condition_Success_Leads=["ID-22"]
+Condition_Fail_Leads=["ID-16"]
+
+
+[ID-16]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="One last riddle for you. If you answer this correctly I will remove the curse from you that you triggred by stepping on my traps."
+Leads=[ "ID-17" ]
+
+[ID-17]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="There is a creature which could double its size every day. If the creature is put in a crate, then it will fill this crate in 10 days. How many days would it take for the creature to fill 1/4 of the crate?"
+Leads=[ "ID-18","ID-19","ID-20","ID-21" ]
+
+
+[ID-18]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="4"
+Answer="That is not correct."
+Leads=[ "ID-8"]
+RemovesQuery=["9","8","6"]
+
+[ID-19]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="9"
+Answer="That is not correct."
+Leads=[ "ID-8"]
+RemovesQuery=["4","8","6"]
+
+[ID-20]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="8"
+Answer="That is correct."
+Leads=[ "ID-22"]
+RemovesQuery=["4","9","6"]
+
+[ID-21]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="6"
+Answer="That is not correct."
+Leads=[ "ID-8"]
+RemovesQuery=["4","9","8"]
+
+
+[ID-22]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Now I would like to see your magical capabilities!"
+Leads=[ "ID-24" ]
+
+[ID-24]
+
+Conditional=false
+Reaction=false
+Battle=true
+Query="I'm prepared!"
+Battle_Success_Leads=["ID-26"]
+Battle_Fail_Leads=["ID-25"]
+Answer="Let's see."
+
+[ID-25]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Not bad, but you are far from ready."
+Leads=[ "ID-END" ]
+
+[ID-26]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="I must say, I had my doubts about you but seeing what you are capable of... You are definetly talented!"
+Leads=[ "ID-END" ]
+
+
+[ID-8]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Your mind is not clear enyough for the tasks ahead."
+Leads=[ "ID-END" ]
+
+[ID-END]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Feldar helkor! Thank you for your time."
+Answer="Jyon feldar, Desil."
+

@@ -1,0 +1,16 @@
+# Ignore everything in root
+*
+
+# Allow folders in root
+!*/
+
+# Specifically ignore these folders
+.idea/*
+.vscode/*
+
+# Whitelist specific folders and files
+!Adventures_of_Desil/**
+!pictures/**
+!.gitignore
+!Binaries.7z
+!README.md

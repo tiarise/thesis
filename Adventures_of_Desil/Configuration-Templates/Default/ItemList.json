@@ -1,0 +1,216 @@
+//Item List for the Framework to use.
+//All items must be placed within these categories.
+//***-Flat means the Stat is modified by the added flat number, ***-Percentage means that the Stat is modified by it's own percentage.
+// The "-*-" can't be i names. Also the (4-10) means that the item statistic group can only appear in items with at least lvl 4... but tops 10
+//So if you need a modifier that should apper after itemlevel 5 to everyhting you should make a Group-*-5-MAXITEMLEVEL  group.
+//The bigger the number the more common the item.
+{
+      "Helmet":
+      {
+              "BaseItem":
+              {
+                       "LeatherCap":
+                      {
+                        "LevelRequirement" : 1,
+                        "Rarity" : 1
+                      }
+              },
+                
+                
+              "ModifierGroups":
+              {
+                    "Group-*-1-10":   
+                    {
+                        "Simple": 
+                        { 
+                          "Modifications": { "Health-Flat": 1.0 },
+                          "Rarity" : 1
+                        }
+                    }
+              }
+      },
+
+      "Chest":
+      {
+              "BaseItem":
+              {
+                      "LeatherChest":
+                      {
+                        "LevelRequirement" : 1,
+                        "Rarity" : 1
+                      }
+
+              },
+          
+              "ModifierGroups":
+              {
+                    "Group-*-1-10":   
+                    {
+                        "Simple": 
+                        { 
+                          "Modifications": { "Health-Flat": 1.0 },
+                          "Rarity" : 1
+                        },
+
+                          "IronHearth": 
+                        { 
+                          "Modifications": { "Health-Flat" : 30.0 },
+                          "Rarity" : 1
+                        }
+                    }
+              }
+      },
+
+      "Gloves":
+      {
+              "BaseItem":
+              {
+                       "LeatherGloves":
+                      {
+                        "LevelRequirement" : 1,
+                        "Rarity" : 1
+                      }
+              },
+                
+                
+              "ModifierGroups":
+              {
+                    "Group-*-1-10":   
+                    {
+                        "Simple": 
+                        { 
+                          "Modifications": { "Health-Flat": 1.0 },
+                          "Rarity" : 1
+                        },
+
+                         "ArcaneInfused": 
+                        { 
+                          "Modifications": { "Willpower-Flat" : 20.0  },
+                          "Rarity" : 1
+                        }
+                    }
+              }
+      },
+
+      "Trousers":
+      {
+              "BaseItem":
+              {
+                       "TextilTrousers":
+                      {
+                        "LevelRequirement" : 1,
+                        "Rarity" : 1
+                      }
+              },
+                
+                
+              "ModifierGroups":
+              {
+                   "Group-*-1-10":   
+                   {
+                        "Simple": 
+                        { 
+                          "Modifications": { "Health-Flat": 1.0 },
+                          "Rarity" : 1
+                        }
+                   }
+              }
+      },
+
+      "Boots":
+      {
+              "BaseItem":
+              {
+                       "LeatherBoots":
+                      {
+                        "LevelRequirement" : 1,
+                        "Rarity" : 1
+                      }
+              },
+                
+                
+              "ModifierGroups":
+              {
+                    "Group-*-1-10":   
+                    {
+                        "Simple": 
+                        { 
+                          "Modifications": { "Health-Flat": 1.0 },
+                          "Rarity" : 1
+                        }
+                    }
+              }
+      },
+
+      "Ring":
+      {
+              "BaseItem":
+              {
+                       "Ring":
+                      {
+                        "LevelRequirement" : 3,
+                        "Rarity" : 1
+                      }
+              },
+                
+                
+              "ModifierGroups":
+              {
+                    "Group-*-1-10":   
+                    {
+                        "Magic": 
+                        { 
+                          "Modifications": { "Dexterity-Flat": 5.0 },
+                          "Rarity" : 1
+                        }
+                    }
+              }
+      },
+
+      "OneHandedWeapon":
+      {
+              "BaseItem":
+              {
+                       "Sword":
+                      {
+                        "LevelRequirement" : 2,
+                        "Rarity" : 1
+                      },
+
+                       "Wand":
+                      {
+                        "LevelRequirement" : 2,
+                        "Rarity" : 1
+                      }
+              },
+              
+              "ModifierGroups":
+              {
+                       "Group-*-1-10":   
+                    {
+                        "SoulFeast": 
+                        { 
+                          "Modifications": { "Strength-Flat" : 60.0, "Intelligence-Flat" : -60.0  },
+                          "Rarity" : 1
+                        },
+
+                         "DireWood": 
+                        { 
+                          "Modifications": { "Intelligence-Flat" : 10.0  },
+                          "Rarity" : 1
+                        }
+                    }
+              }
+      },
+
+      "TwoHandedWeapon":
+      {
+              "BaseItem":
+              {
+              },
+              
+              "ModifierGroups":
+              {
+              }
+      }
+}

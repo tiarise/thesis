@@ -1,0 +1,64 @@
+[I. Mage training]
+
+StartType ="AlwaysOn"
+
+CompletionType="Talk"
+CompleteNPC="Belkor"
+CompleteKeyLine="We will see. Remember, don't force the flow. Just try to shepherd it. Tell me when you are ready!"
+
+Description="I should talk to Belkor in the chapel."
+CompletionText="I found Belkor."
+RewardExperience=5
+
+Priority="Primary"
+
+
+[II. Beat Belkor in a duel]
+
+StartType ="Talk"
+StartTriggerLine = "We will see. Remember, don't force the flow. Just try to shepherd it. Tell me when you are ready!"
+StartNPC="Belkor"
+
+CompletionType="Talk"
+CompleteNPC="Belkor"
+CompleteKeyLine="Well done, well done... If you continue like this, you'll have a bright future ahead of you. That's it for today. At least here."
+
+Description="I have to win a duel against Belkor today."
+CompletionText="Belkor gave me a ring. It feels like it repells physical magic."
+RewardExperience=25
+RewardItems=["Magic Ring"]
+
+
+Priority="Primary"
+
+[III. Find Gywenne]
+
+StartType ="Talk"
+StartTriggerLine = "Gywenne wishes to talk to you. She lives just outside of Cesferan. As I'm given to understand she has a test for you."
+StartNPC="Belkor"
+
+CompletionType="Talk"
+CompleteNPC="Gywenne"
+CompleteKeyLine="Correct. Now it's your turn to answer my questions."
+
+Description="I have to find a woman named Gywenne."
+CompletionText="I found the one who Belkor mentioned."
+RewardExperience=15
+
+Priority="Primary"
+
+[IV. Pass Gywenne's tests]
+
+StartType ="Talk"
+StartTriggerLine = "Correct. Now it's your turn to answer my questions."
+StartNPC="Gywenne"
+
+CompletionType="Talk"
+CompleteNPC="Gywenne"
+CompleteKeyLine="I must say, I had my doubts about you but seeing what you are capable of... You are definetly talented!"
+
+Description="I have to pass Gywenne's test."
+CompletionText="I have passed Gywenne's test."
+RewardExperience=30
+
+Priority="Primary"

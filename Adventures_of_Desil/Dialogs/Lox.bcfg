@@ -1,0 +1,26 @@
+[ID-1]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="By the orders of Captain Eyner the road is closed!"
+Leads=[ "ID-2"]
+
+[ID-2]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Is it the same reason why the south road is closed?"
+Answer="Yes, in the last few days the southern swamp and the forest up north became too dangerous to cross."
+Leads=[ "ID-END"]
+
+
+[ID-END]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="I see."
+Answer="I'm sorry citizen, it is for your own safety." 
+ 

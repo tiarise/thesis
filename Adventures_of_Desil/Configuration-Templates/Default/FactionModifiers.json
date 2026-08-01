@@ -1,0 +1,74 @@
+//Factions Basic Statistic Modifier configuration file ( place values as float format!)
+//Example : Strength     :{ Health  = 0.2; }; means that Health is modified by the +(strength*02) value
+{
+  "Desil":
+  {
+    "Main_Attributes":
+    {
+      "Strength"     :{ "Health" : 1.5 },
+      "Willpower"    :{ "Intelligence" : 0.5 }
+    },
+
+    "Secondary_Attributes":
+    {
+      "Experience" :{ }
+    }
+  },
+
+  "Belkor":
+  {
+    "Main_Attributes":
+    {
+      "Strength"     :{ "Health" : 1.5 },
+      "Willpower"    :{ "Intelligence" : 0.5 }
+    },
+
+    "Secondary_Attributes":
+    {
+      "Experience" :{ }
+    }
+  },
+
+  "Velrath":
+  {
+    "Main_Attributes":
+    {
+      "Strength"     :{ "Health" : 1.5 },
+      "Willpower"    :{ "Intelligence" : 0.5 }
+    },
+
+    "Secondary_Attributes":
+    {
+      "Experience" :{ }
+    }
+  },
+
+  "Bozz":
+  {
+    "Main_Attributes":
+    {
+      "Strength"     :{ "Health" : 1.5 },
+      "Willpower"    :{ "Intelligence" : 0.5 }
+    },
+
+    "Secondary_Attributes":
+    {
+      "Experience" :{ }
+    }
+  },
+
+  "Gywenne":
+  {
+    "Main_Attributes":
+    {
+      "Strength"     :{ "Health" : 1.5 },
+      "Willpower"    :{ "Intelligence" : 0.5 }
+    },
+
+    "Secondary_Attributes":
+    {
+      "Experience" :{ }
+    }
+  }
+}
+

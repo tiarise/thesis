@@ -1,0 +1,132 @@
+[ID-1]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Sorry lad. We closed the road until further notice."
+Leads=[ "ID-2"]
+
+[ID-2]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Why? What happened?"
+Answer="The swamp can't be crossed because the recent weather messed it up. We don't want any casualties."
+Leads=[ "ID-3"]
+
+
+[ID-3]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Also several people reported that somebody stole supplies from them at night."
+Leads=[ "ID-4"]
+
+[ID-4]
+
+Conditional=true
+Reaction=true
+Battle=false
+Condition_Type="QuestIsActive"
+Condition_Name="I. Strange reports"
+Condition_Success_Leads=["ID-6"]
+Condition_Fail_Leads=["ID-5"]
+
+[ID-5]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="So please if you hear anything suspicious report to me immediately!"
+Leads=[ "ID-END" ]
+
+[ID-6]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Anything to report?"
+Leads=[ "ID-7" ]
+
+[ID-7]
+
+Conditional=true
+Reaction=true
+Battle=false
+Condition_Type="QuestIsActive"
+Condition_Name="II. Eyewitness"
+Condition_Success_Leads=["ID-9"]
+Condition_Fail_Leads=["ID-8"]
+
+[ID-8]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Strange events, witnesses of the noises?"
+Leads=[ "ID-10" ]
+
+[ID-9]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Strange events, witnesses of the noises?"
+Leads=[ "ID-11" ]
+
+
+[ID-10]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="I haven't heard anything."
+Answer="No problem, keep an eye out."
+Leads=[ "ID-END"]
+
+
+[ID-11]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="I have found a witness named Fex, he claims that something robbed him yestoday in Iss'mor."
+Answer="Something!? That's an awful lot of information. These news made me quite a bit anxious about the safety of the villagers out in Iss'mor."
+Leads=[ "ID-12"]
+
+[ID-12]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Something has to be done. You are a mage adept right?"
+Leads=[ "ID-13" ]
+
+[ID-13]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Hardly. I'm merely applying to be one."
+Answer="That's enyought for me. Please go to Iss'mor and check on the harvesting villagers to see if they are safe. And take this armor, it is dangerous to go alone!"
+Leads=[ "ID-14"]
+
+[ID-14]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Very well, I will do what I can. Thank you for the gift!"
+Answer="I have faith in you."
+Leads=[ "ID-END"]
+
+
+[ID-END]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Bye."
+Answer="Thank you."

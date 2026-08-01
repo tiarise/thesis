@@ -1,0 +1,93 @@
+//Factions  configuration file. Please add all values as Float.
+{
+	"Desil": {
+		"Vitals": {
+			"Health": 100.0
+		},
+
+		"Main_Attributes": {
+			"Strength": 20,
+			"Intelligence": 60,
+			"Dexterity": 10,
+			"Willpower": 30
+		},
+
+		"Secondary_Attributes": {
+			"Experience": 0
+		}
+
+	},
+
+	"Belkor": {
+		"Vitals": {
+			"Health": 90.0
+		},
+
+		"Main_Attributes": {
+			"Strength": 20,
+			"Intelligence": 90,
+			"Dexterity": 15,
+			"Willpower": 30
+		},
+
+		"Secondary_Attributes": {
+			"Experience": 0
+		}
+
+	},
+
+	"Velrath": {
+		"Vitals": {
+			"Health": 105.0
+		},
+
+		"Main_Attributes": {
+			"Strength": 30,
+			"Intelligence": 70,
+			"Dexterity": 30,
+			"Willpower": 50
+		},
+
+		"Secondary_Attributes": {
+			"Experience": 0
+		}
+
+	},
+
+	"Bozz": {
+		"Vitals": {
+			"Health": 120.0
+		},
+
+		"Main_Attributes": {
+			"Strength": 80,
+			"Intelligence": 30,
+			"Dexterity": 30,
+			"Willpower": 10
+		},
+
+		"Secondary_Attributes": {
+			"Experience": 0
+		}
+
+	},
+
+	"Gywenne": {
+		"Vitals": {
+			"Health": 120.0
+		},
+
+		"Main_Attributes": {
+			"Strength": 10,
+			"Intelligence": 200,
+			"Dexterity": 50,
+			"Willpower": 60
+		},
+
+		"Secondary_Attributes": {
+			"Experience": 0
+		}
+
+	}
+
+}

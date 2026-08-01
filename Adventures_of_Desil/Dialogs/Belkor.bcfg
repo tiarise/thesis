@@ -1,0 +1,61 @@
+[ID-1]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Jyon feldar, Desil! Are you prepared for today's session?"
+Leads=[ "ID-2"]
+
+
+[ID-2]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Yes, ofcourse."
+Answer="We will see. Remember, don't force the flow. Just try to shepherd it. Tell me when you are ready!"
+Leads=[ "ID-3"]
+
+
+[ID-3]
+
+Conditional=false
+Reaction=false
+Battle=true
+Query="Let us begin."
+Battle_Success_Leads=["ID-5"]
+Battle_Fail_Leads=["ID-4"]
+Answer="Nelmoren loy!"
+
+[ID-4]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="You should practise more. This is not satisfactory, Desil."
+Leads=[ "ID-END" ]
+
+[ID-5]
+
+Conditional=false
+Reaction=true
+Battle=false
+Answer="Well done, well done... If you continue like this, you'll have a bright future ahead of you. That's it for today. At least here."
+Leads=[ "ID-6" ]
+
+[ID-6]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Here?"
+Answer="Gywenne wishes to talk to you. She lives just outside of Cesferan. As I'm given to understand she has a test for you."
+Leads=[ "ID-END"]
+
+[ID-END]
+
+Conditional=false
+Reaction=false
+Battle=false
+Query="Feldar helkor! Thank you for your time master."
+Answer="Do your best. I have faith in you."

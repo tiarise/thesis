@@ -1,0 +1,8 @@
+***2017.05.2
+AoD reached Stable Release v1.0
+***2017.04.24
+AoD reached stage Release Candidate (RC-1)
+***2017.04.15
+AoD reached the Beta stage
+***2017.03.25
+AoD reached the Alpha stage

@@ -1,0 +1,771 @@
+[gd_scene load_steps=32 format=1]
+
+[ext_resource path="res://Scripts/Iss'morSceneRoot.gd" type="Script" id=1]
+[ext_resource path="res://Textures/Iss'mor/Iss'mor_Layers/Iss'mor_Background.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Iss'mor/Iss'mor_Layers/Iss'mor_Road_Trees.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/SoundManager.gd" type="Script" id=4]
+[ext_resource path="res://Audio/WorldSounds/TimedSounds/thunder_rumbling_ 1.wav" type="Sample" id=5]
+[ext_resource path="res://Audio/WorldSounds/TimedSounds/thunder_rumbling_ 2.wav" type="Sample" id=6]
+[ext_resource path="res://Audio/WorldSounds/TimedSounds/thunder_rumbling_ 3.wav" type="Sample" id=7]
+[ext_resource path="res://Audio/WorldSounds/TimedSounds/thunderclap_1.wav" type="Sample" id=8]
+[ext_resource path="res://Audio/WorldSounds/ConstantSounds/light_rain.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Audio/MiscSounds/notification.smp" type="Sample" id=10]
+[ext_resource path="res://Audio/Music/Dexter_Britain_-_05_-_Seeing_The_Future.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Audio/Music/ofeliasdream.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Textures/GameEffects/Lights/Lamps.png" type="Texture" id=13]
+[ext_resource path="res://Textures/GameEffects/Rain/rainDrop.png" type="Texture" id=14]
+[ext_resource path="res://Textures/GameEffects/Rain/rainDropBig.png" type="Texture" id=15]
+[ext_resource path="res://Textures/GameEffects/Rain/rainDropGiga.png" type="Texture" id=16]
+[ext_resource path="res://Textures/GameEffects/Lights/TrapMask-2500x2500.png" type="Texture" id=17]
+[ext_resource path="res://Scenes/KinematicAnimatedSprite.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scripts/DialogManager.gd" type="Script" id=19]
+[ext_resource path="res://Scripts/QuestManager.gd" type="Script" id=20]
+[ext_resource path="res://Scripts/Iss'mor_WorldEvents_SceneChange.gd" type="Script" id=21]
+[ext_resource path="res://Scenes/Trap.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Scripts/Player_Navigation.gd" type="Script" id=23]
+[ext_resource path="res://Scripts/UI_Camera_Navigation.gd" type="Script" id=24]
+[ext_resource path="res://Scenes/PlayerAndUI.tscn" type="PackedScene" id=25]
+[ext_resource path="res://icon.png" type="Texture" id=26]
+
+[sub_resource type="SampleLibrary" id=1]
+
+samples/0 = { "db":10.0, "pitch":1.0, "sample":ExtResource( 5 ) }
+samples/1 = { "db":10.0, "pitch":1.0, "sample":ExtResource( 6 ) }
+samples/2 = { "db":10.0, "pitch":1.0, "sample":ExtResource( 7 ) }
+
+[sub_resource type="SampleLibrary" id=2]
+
+samples/0 = { "db":0.0, "pitch":1.0, "sample":ExtResource( 8 ) }
+
+[sub_resource type="SampleLibrary" id=3]
+
+samples/notification = { "db":0.0, "pitch":1.0, "sample":ExtResource( 10 ) }
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="NavigationPolygon" id=5]
+
+vertices = Vector2Array( 2001.6, 228.245, 1973.79, 175.621, 2072.02, 257.105, 1338.28, 913.75, 1337, 887.277, 1557.61, 818.625, 1734.76, 1004.06, 1492.07, 1308.58, 1467.83, 1289.46, 618.396, 770.245, 644.657, 693.977, 653.92, 723.075, 745.787, 1153.83, 703.454, 1139.88, 2548.29, 1841.95, 2558, 2062.1, 2486.86, 1984.22, 2443.78, 1806.5, 2603.72, 410.769, 2540.36, 793.612, 2487.95, 719.658, 2554.37, 414.223, 1321.22, 936.42, 1370.58, 1258.1, 1320.61, 1304.69, 765.136, 1247.11, 772.644, 1219.36, 1290.28, 945.763, 2113.59, 2598.81, 2199.67, 2646.57, 2165.06, 2661.59, 1298.74, 1928.9, 1571.23, 1754.43, 1603, 2087.9, 1297.35, 1955.83, 1294.73, 1901.93, 1493.42, 1374.48, 1264.91, 1885.56, 883.94, 1637.18, 1458.13, 1387.77, 1188.09, 1911.37, 877.47, 1685.02, 1136.03, 508.872, 1047.28, 476.559, 938.96, 339.528, 1105.01, 295.249, 1200.72, 303.278, 1204.88, 412.578, 1501.78, 1340.24, 1815.15, 1071.61, 1757.26, 1352.92, 1417.46, 1395.61, 1370.48, 1402.51, 1340.75, 1394.18, 493.577, 748.791, 451.174, 653.517, 465.367, 603.93, 543.997, 658.238, 532.962, 708.861, 531.94, 751.824, 501.463, 777.515, 539.563, 795.424, 564.417, 766.712, 2198.94, 2085.49, 2395.5, 2122.06, 2475.17, 2144.6, 2562.95, 2171.28, 2574.72, 2409.56, 2543.1, 2591.5, 2221.62, 2431.48, 2056.38, 2178.73, 1319.26, 1369.66, 865.737, 1606.36, 1444.09, 619.27, 1325.56, 840.151, 1287.06, 600.995, 1226.61, 589.762, 1288.94, 820.785, 1119.36, 706.65, 2470.88, 413.645, 2406.27, 695.705, 2183.06, 234.075, 2168.24, 191.478, 2296.05, 173.953, 2303.96, 272.23, 646.456, 2588.18, 409.221, 2638.35, 122.344, 2641.9, -18.0285, 2602.05, -13.1159, 2217.08, 528.915, 2313.71, 575.165, 2356.59, 601.328, 2377.85, 628.299, 2410.38, 1691.75, 2262.58, 1482.24, 2261.01, 1384.3, 2138.62, 1290.59, 1980.93, 1685.96, 2187.33, 853.838, 1729.06, 1184.67, 1973.02, 1020.88, 1919.4, 838.128, 2702.41, 681.23, 2410.02, 993.615, 2697.95, 2433.06, 1990.37, 2313.46, 1893.94, 2310.38, 1817.2, 2386.96, 1739.79, 1217.63, 521.937, 2435.19, 859.589, 2533.66, 870.297, 2527.01, 1105.55, 2453.12, 1109.56, 2356.17, 875.496, 2392.61, 1140.79, 2295.06, 1144.84, 2228.38, 909.095, 2305.43, 838.141, 2192.95, 2753.34, 2198.06, 2849.38, 2170.24, 2867.17, 2142.88, 2832.95, 2139.16, 2781.6, 2151.25, 2728.61, 2074.91, 2768.94, 822.86, 1592.56, 727.478, 1262.45, 692.783, 1272.45, 737.885, 1630.03, 1420.14, 1268.37, 1253.47, 954.329, 1222.59, 954.116, 761.142, 1190.02, 1209.59, 921.681, 1209.36, 848.169, 1056.57, 730.771, 2390.53, 2015.32, 2232.74, 2025.12, 2219.33, 1933, 2353.69, 348.322, 2298.3, 713.088, 2172.75, 722.762, 1904.87, 497.012, 1856.01, 428.366, 1829.9, 363.673, 2142.02, 253.911, 2248.56, 1751.79, 2237.35, 1576.86, 2303.44, 1549.58, 2396.46, 1673.53, 552.251, 1341.15, 663.568, 1265.91, 601.089, 1525.63, 2280.77, 789.967, 2387.63, 1207.08, 2316.55, 1345.9, 2446.11, 1251.2, 2332.23, 1492.99, 2292.67, 1417.55, 2522.62, 1304.49, 2520.79, 1428.12, 2485.64, 1637.97, 2363.28, 2068.89, 1930.86, 2252.77, 1805.44, 2388.37, 1789.93, 2260.81, 1838.69, 2509.02, 980.584, 711.829, 922.754, 729.846, 795.514, 665.122, 659.308, 1176.64, 657.091, 1215.15, 656.431, 1240.02, 563.774, 1772.49, 737.443, 1693.87, 769.168, 1722.33, 805.966, 1727.5, 1221.42, 2036.7, 1197.12, 1989.87, 1219.83, 1996.61, 1238.96, 2000.93, 1274.35, 1992.2, 1840.14, 2627.18, 2011.55, 2799.44, 1874.38, 2831.79, 703.549, 2371.95, 720.045, 2360.46, 759.935, 2373.93, 794.676, 2358.58, 825.504, 2344.67, 878.604, 2352.38, 924.172, 2389.29, 1020.43, 2470.71, 1102.87, 2800.5, 1216.85, 2582.37, 1327.5, 2704.27, 1243.26, 2838.49, 1572.62, 2846.34, 1460.43, 2730.25, 1614.16, 2739.6, 1702.62, 2701.29 )
+polygons = [ IntArray( 0, 1, 2 ), IntArray( 3, 4, 5, 6, 7, 8 ), IntArray( 9, 10, 11, 12, 13 ), IntArray( 14, 15, 16, 17 ), IntArray( 18, 19, 20, 21 ), IntArray( 22, 23, 24, 25, 26, 27 ), IntArray( 28, 29, 30 ), IntArray( 31, 32, 33, 34 ), IntArray( 32, 31, 35 ), IntArray( 36, 32, 35, 37, 38, 39 ), IntArray( 38, 37, 40, 41 ), IntArray( 42, 43, 44, 45, 46, 47 ), IntArray( 48, 49, 50, 32, 36 ), IntArray( 51, 39, 38 ), IntArray( 52, 51, 38 ), IntArray( 53, 52, 38 ), IntArray( 54, 55, 56, 57, 58 ), IntArray( 54, 58, 59, 60 ), IntArray( 61, 60, 59, 62 ), IntArray( 63, 64, 65, 66, 67, 68, 69, 70 ), IntArray( 71, 53, 38, 72, 25 ), IntArray( 73, 5, 4, 74, 75 ), IntArray( 76, 75, 74, 77, 78 ), IntArray( 79, 21, 20, 80 ), IntArray( 81, 82, 83, 84 ), IntArray( 85, 86, 87, 88, 89, 90, 91 ), IntArray( 85, 91, 92, 93 ), IntArray( 94, 95, 96, 97, 34, 33, 98 ), IntArray( 99, 41, 40, 100, 101 ), IntArray( 102, 85, 93, 103, 104 ), IntArray( 17, 16, 105, 106, 107, 108 ), IntArray( 42, 47, 109 ), IntArray( 76, 42, 109, 75 ), IntArray( 110, 111, 112, 113, 114 ), IntArray( 114, 113, 115, 116, 117, 118 ), IntArray( 119, 120, 121, 122, 123, 124 ), IntArray( 124, 123, 125, 28, 30 ), IntArray( 25, 24, 71 ), IntArray( 25, 72, 126, 127 ), IntArray( 128, 127, 126, 129 ), IntArray( 49, 48, 7, 6 ), IntArray( 3, 8, 130, 22 ), IntArray( 22, 130, 23 ), IntArray( 131, 27, 26 ), IntArray( 132, 131, 26, 133 ), IntArray( 132, 133, 12, 134 ), IntArray( 78, 77, 135, 136 ), IntArray( 137, 138, 139, 106, 105 ), IntArray( 140, 79, 80, 141, 142 ), IntArray( 143, 144, 145, 0, 2, 142 ), IntArray( 142, 2, 146 ), IntArray( 147, 148, 149, 150, 108, 107 ), IntArray( 151, 152, 128, 129, 153 ), IntArray( 142, 146, 81, 84, 140 ), IntArray( 142, 141, 154, 117 ), IntArray( 117, 154, 118 ), IntArray( 116, 115, 155, 156 ), IntArray( 156, 155, 157 ), IntArray( 158, 159, 156, 157, 160, 161, 162 ), IntArray( 158, 162, 150, 149 ), IntArray( 138, 137, 163, 63 ), IntArray( 63, 163, 64 ), IntArray( 164, 70, 69, 28 ), IntArray( 165, 166, 164, 28, 167 ), IntArray( 168, 136, 135, 134, 12, 169 ), IntArray( 170, 169, 12, 11 ), IntArray( 61, 62, 9, 13, 171 ), IntArray( 151, 61, 171, 172 ), IntArray( 151, 172, 173 ), IntArray( 151, 173, 152 ), IntArray( 174, 153, 129, 175 ), IntArray( 174, 175, 176 ), IntArray( 101, 174, 176, 177 ), IntArray( 101, 177, 99 ), IntArray( 178, 101, 100, 179 ), IntArray( 178, 179, 180 ), IntArray( 178, 180, 181, 96 ), IntArray( 96, 181, 182 ), IntArray( 96, 182, 97 ), IntArray( 94, 98, 166, 165 ), IntArray( 183, 167, 28, 125, 184, 185 ), IntArray( 104, 103, 186, 187, 188 ), IntArray( 104, 188, 189 ), IntArray( 104, 189, 190, 191, 192, 193 ), IntArray( 194, 104, 193, 195, 196, 197 ), IntArray( 198, 197, 196, 199 ), IntArray( 198, 199, 200, 185 ), IntArray( 185, 200, 201 ), IntArray( 185, 201, 183 ) ]
+outlines = [ Vector2Array( 1444.09, 619.27, 1557.61, 818.625, 1734.76, 1004.06, 1815.15, 1071.61, 1757.26, 1352.92, 1571.23, 1754.43, 1603, 2087.9, 1685.96, 2187.33, 1789.93, 2260.81, 1930.86, 2252.77, 2056.38, 2178.73, 2198.94, 2085.49, 2232.74, 2025.12, 2219.33, 1933, 2313.46, 1893.94, 2310.38, 1817.2, 2248.56, 1751.79, 2237.35, 1576.86, 2303.44, 1549.58, 2332.23, 1492.99, 2292.67, 1417.55, 2316.55, 1345.9, 2295.06, 1144.84, 2228.38, 909.095, 2172.75, 722.762, 1904.87, 497.012, 1856.01, 428.366, 1829.9, 363.673, 2001.6, 228.245, 1973.79, 175.621, 2072.02, 257.105, 2142.02, 253.911, 2183.06, 234.075, 2168.24, 191.478, 2296.05, 173.953, 2303.96, 272.23, 2353.69, 348.322, 2470.88, 413.645, 2554.37, 414.223, 2603.72, 410.769, 2540.36, 793.612, 2487.95, 719.658, 2406.27, 695.705, 2298.3, 713.088, 2280.77, 789.967, 2305.43, 838.141, 2356.17, 875.496, 2435.19, 859.589, 2533.66, 870.297, 2527.01, 1105.55, 2453.12, 1109.56, 2392.61, 1140.79, 2387.63, 1207.08, 2446.11, 1251.2, 2522.62, 1304.49, 2520.79, 1428.12, 2485.64, 1637.97, 2396.46, 1673.53, 2386.96, 1739.79, 2443.78, 1806.5, 2548.29, 1841.95, 2558, 2062.1, 2486.86, 1984.22, 2433.06, 1990.37, 2390.53, 2015.32, 2363.28, 2068.89, 2395.5, 2122.06, 2475.17, 2144.6, 2562.95, 2171.28, 2574.72, 2409.56, 2543.1, 2591.5, 2221.62, 2431.48, 2113.59, 2598.81, 2199.67, 2646.57, 2165.06, 2661.59, 2151.25, 2728.61, 2192.95, 2753.34, 2198.06, 2849.38, 2170.24, 2867.17, 2142.88, 2832.95, 2139.16, 2781.6, 2074.91, 2768.94, 2011.55, 2799.44, 1874.38, 2831.79, 1572.62, 2846.34, 1243.26, 2838.49, 1102.87, 2800.5, 993.615, 2697.95, 838.128, 2702.41, 646.456, 2588.18, 409.221, 2638.35, 122.344, 2641.9, -18.0285, 2602.05, -13.1159, 2217.08, 528.915, 2313.71, 575.165, 2356.59, 601.328, 2377.85, 628.299, 2410.38, 681.23, 2410.02, 703.549, 2371.95, 720.045, 2360.46, 759.935, 2373.93, 794.676, 2358.58, 825.504, 2344.67, 878.604, 2352.38, 924.172, 2389.29, 1020.43, 2470.71, 1216.85, 2582.37, 1327.5, 2704.27, 1460.43, 2730.25, 1614.16, 2739.6, 1702.62, 2701.29, 1840.14, 2627.18, 1838.69, 2509.02, 1805.44, 2388.37, 1691.75, 2262.58, 1482.24, 2261.01, 1384.3, 2138.62, 1221.42, 2036.7, 1020.88, 1919.4, 563.774, 1772.49, 601.089, 1525.63, 552.251, 1341.15, 539.563, 795.424, 501.463, 777.515, 493.577, 748.791, 451.174, 653.517, 465.367, 603.93, 543.997, 658.238, 532.962, 708.861, 531.94, 751.824, 564.417, 766.712, 618.396, 770.245, 644.657, 693.977, 653.92, 723.075, 795.514, 665.122, 922.754, 729.846, 980.584, 711.829, 1056.57, 730.771, 1119.36, 706.65, 1226.61, 589.762, 1136.03, 508.872, 1047.28, 476.559, 938.96, 339.528, 1105.01, 295.249, 1200.72, 303.278, 1204.88, 412.578, 1217.63, 521.937, 1287.06, 600.995 ), Vector2Array( 737.885, 1630.03, 737.443, 1693.87, 769.168, 1722.33, 805.966, 1727.5, 853.838, 1729.06, 877.47, 1685.02, 883.94, 1637.18, 865.737, 1606.36, 822.86, 1592.56 ), Vector2Array( 1188.09, 1911.37, 1184.67, 1973.02, 1197.12, 1989.87, 1219.83, 1996.61, 1238.96, 2000.93, 1274.35, 1992.2, 1290.59, 1980.93, 1297.35, 1955.83, 1298.74, 1928.9, 1294.73, 1901.93, 1264.91, 1885.56 ), Vector2Array( 1320.61, 1304.69, 1319.26, 1369.66, 1340.75, 1394.18, 1370.48, 1402.51, 1417.46, 1395.61, 1458.13, 1387.77, 1493.42, 1374.48, 1501.78, 1340.24, 1492.07, 1308.58, 1467.83, 1289.46, 1420.14, 1268.37, 1370.58, 1258.1 ), Vector2Array( 659.308, 1176.64, 657.091, 1215.15, 656.431, 1240.02, 663.568, 1265.91, 692.783, 1272.45, 727.478, 1262.45, 765.136, 1247.11, 772.644, 1219.36, 761.142, 1190.02, 745.787, 1153.83, 703.454, 1139.88 ), Vector2Array( 1209.36, 848.169, 1209.59, 921.681, 1222.59, 954.116, 1253.47, 954.329, 1290.28, 945.763, 1321.22, 936.42, 1338.28, 913.75, 1337, 887.277, 1325.56, 840.151, 1288.94, 820.785 ) ]
+
+[node name="SceneRoot" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="BackgroundLayers" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="Background" type="Sprite" parent="BackgroundLayers"]
+
+z/z = -5
+texture = ExtResource( 2 )
+centered = false
+__meta__ = { "_edit_lock_":true }
+
+[node name="RoadTrees" type="Sprite" parent="BackgroundLayers"]
+
+z/z = -3
+texture = ExtResource( 3 )
+centered = false
+__meta__ = { "_edit_lock_":true }
+
+[node name="Sounds" type="Node2D" parent="."]
+
+script/script = ExtResource( 4 )
+
+[node name="WorldSounds" type="Node2D" parent="Sounds"]
+
+[node name="TimedSounds" type="Node2D" parent="Sounds/WorldSounds"]
+
+editor/display_folded = true
+
+[node name="Bird" type="SamplePlayer2D" parent="Sounds/WorldSounds/TimedSounds" groups=[ "WorldSounds_TimedSounds" ]]
+
+editor/display_folded = true
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = null
+config/pitch_random = 0.0
+
+[node name="Timer" type="Timer" parent="Sounds/WorldSounds/TimedSounds/Bird"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="ThunderRumbling" type="SamplePlayer2D" parent="Sounds/WorldSounds/TimedSounds" groups=[ "WorldSounds_TimedSounds" ]]
+
+editor/display_folded = true
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 16384.0
+params/attenuation/distance_exp = 4.02682e-05
+config/polyphony = 1
+config/samples = SubResource( 1 )
+config/pitch_random = 0.0
+
+[node name="Timer" type="Timer" parent="Sounds/WorldSounds/TimedSounds/ThunderRumbling"]
+
+process_mode = 1
+wait_time = 25.0
+one_shot = true
+autostart = false
+
+[node name="Thunder" type="SamplePlayer2D" parent="Sounds/WorldSounds/TimedSounds" groups=[ "WorldSounds_TimedSounds" ]]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 16384.0
+params/attenuation/distance_exp = 4.02682e-05
+config/polyphony = 1
+config/samples = SubResource( 2 )
+config/pitch_random = 0.0
+
+[node name="Timer" type="Timer" parent="Sounds/WorldSounds/TimedSounds/Thunder"]
+
+process_mode = 1
+wait_time = 40.0
+one_shot = true
+autostart = false
+
+[node name="ConstantSounds" type="Node2D" parent="Sounds/WorldSounds"]
+
+editor/display_folded = true
+
+[node name="Rain" type="StreamPlayer" parent="Sounds/WorldSounds/ConstantSounds" groups=[ "WorldSounds_ConstantSounds", "EnviormentalEffectSounds" ]]
+
+stream/stream = ExtResource( 9 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[node name="MiscSounds" type="Node2D" parent="Sounds"]
+
+editor/display_folded = true
+
+[node name="Popup" type="SamplePlayer2D" parent="Sounds/MiscSounds" groups=[ "MiscSounds" ]]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 0.0
+params/attenuation/max_distance = 10000.0
+params/attenuation/distance_exp = 0.000793213
+config/polyphony = 1
+config/samples = SubResource( 3 )
+config/pitch_random = 0.0
+
+[node name="Music" type="Node2D" parent="Sounds"]
+
+[node name="Track1" type="StreamPlayer" parent="Sounds/Music" groups=[ "MusicSounds" ]]
+
+stream/stream = ExtResource( 11 )
+stream/play = false
+stream/loop = false
+stream/volume_db = 0.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[node name="Track2" type="StreamPlayer" parent="Sounds/Music" groups=[ "MusicSounds" ]]
+
+stream/stream = ExtResource( 12 )
+stream/play = false
+stream/loop = false
+stream/volume_db = 0.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[node name="Lights" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="GlobalNightLight" type="Light2D" parent="Lights"]
+
+transform/pos = Vector2( 1599.43, 1382.23 )
+transform/scale = Vector2( 0.901426, 1.62167 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 50.0
+color = Color( 1, 1, 1, 1 )
+energy = 0.4
+mode = 1
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="ThunderLights" type="Node2D" parent="Lights"]
+
+editor/display_folded = true
+
+[node name="ThunderLight1" type="Light2D" parent="Lights/ThunderLights"]
+
+visibility/visible = false
+transform/pos = Vector2( 799.905, 1012 )
+transform/scale = Vector2( 11.3262, 5.41765 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 0.300842, 0.626784, 0.726562, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="ThunderLight2" type="Light2D" parent="Lights/ThunderLights"]
+
+visibility/visible = false
+transform/pos = Vector2( 597.691, 1552.75 )
+transform/scale = Vector2( 11.3262, 5.41765 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 0.298039, 0.623529, 0.72549, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="ThunderLight3" type="Light2D" parent="Lights/ThunderLights"]
+
+visibility/visible = false
+transform/pos = Vector2( 1197.52, 2059.43 )
+transform/scale = Vector2( 11.3262, 5.41765 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 0.298039, 0.623529, 0.72549, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="ThunderLight4" type="Light2D" parent="Lights/ThunderLights"]
+
+visibility/visible = false
+transform/pos = Vector2( 1838.24, 1598.2 )
+transform/scale = Vector2( 11.3262, 5.41765 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 0.294118, 0.619608, 0.721569, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="ThunderLight5" type="Light2D" parent="Lights/ThunderLights"]
+
+visibility/visible = false
+transform/pos = Vector2( 2213.14, 1982.18 )
+transform/scale = Vector2( 11.3262, 5.41765 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 0.298039, 0.623529, 0.72549, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="ThunderLight6" type="Light2D" parent="Lights/ThunderLights"]
+
+visibility/visible = false
+transform/pos = Vector2( 2433.53, 1182.41 )
+transform/scale = Vector2( 11.3262, 5.41765 )
+enabled = true
+editor_only = false
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 0.298039, 0.623529, 0.72549, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="Timer" type="Timer" parent="Lights/ThunderLights"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="GameEffects" type="Node2D" parent="."]
+
+[node name="Rain" type="Node2D" parent="GameEffects"]
+
+editor/display_folded = true
+
+[node name="Rain1" type="Particles2D" parent="GameEffects/Rain" groups=[ "Rain" ]]
+
+transform/pos = Vector2( 466.362, -235.465 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 14 )
+params/direction = 0.0
+params/spread = 60.0
+params/linear_velocity = 100.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="Rain2" type="Particles2D" parent="GameEffects/Rain" groups=[ "Rain" ]]
+
+transform/pos = Vector2( 1071.84, -243.875 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 14 )
+params/direction = 0.0
+params/spread = 60.0
+params/linear_velocity = 100.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="Rain3" type="Particles2D" parent="GameEffects/Rain" groups=[ "Rain" ]]
+
+transform/pos = Vector2( 1870.74, -264.899 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 14 )
+params/direction = 0.0
+params/spread = 60.0
+params/linear_velocity = 100.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="Rain4" type="Particles2D" parent="GameEffects/Rain" groups=[ "Rain" ]]
+
+transform/pos = Vector2( 2551.91, -277.513 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 14 )
+params/direction = 0.0
+params/spread = 60.0
+params/linear_velocity = 100.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="RainBig1" type="Particles2D" parent="GameEffects/Rain" groups=[ "Rain", "RainBig" ]]
+
+transform/pos = Vector2( 2127.23, -521.388 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 15 )
+params/direction = 0.0
+params/spread = 60.0
+params/linear_velocity = 40.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="RainBig2" type="Particles2D" parent="GameEffects/Rain" groups=[ "Rain", "RainBig" ]]
+
+transform/pos = Vector2( 1459.24, -528.204 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 15 )
+params/direction = 0.0
+params/spread = 60.0
+params/linear_velocity = 40.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="RainBig3" type="Particles2D" parent="GameEffects/Rain" groups=[ "Rain", "RainBig" ]]
+
+transform/pos = Vector2( 754.903, -530.476 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 15 )
+params/direction = 0.0
+params/spread = 60.0
+params/linear_velocity = 40.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="RainGiga1" type="Particles2D" parent="GameEffects/Rain" groups=[ "RainGiga", "Rain" ]]
+
+transform/pos = Vector2( 1136.61, -809.941 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 16 )
+params/direction = 0.0
+params/spread = 90.0
+params/linear_velocity = 50.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="RainGiga2" type="Particles2D" parent="GameEffects/Rain" groups=[ "RainGiga", "Rain" ]]
+
+transform/pos = Vector2( 2009.09, -784.948 )
+config/amount = 80
+config/lifetime = 60.0
+config/time_scale = 5.0
+config/emitting = false
+config/texture = ExtResource( 16 )
+params/direction = 0.0
+params/spread = 90.0
+params/linear_velocity = 50.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="TrapLight" type="Light2D" parent="GameEffects"]
+
+visibility/visible = false
+transform/pos = Vector2( 1073.49, 1368.77 )
+enabled = true
+editor_only = false
+texture = ExtResource( 17 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 0.96875, 0, 1, 1 )
+energy = 1.0
+mode = 2
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0.0105286, 0.898438, 0.815196, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="Critters" type="Node2D" parent="."]
+
+[node name="NPCs" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="NPC15" parent="NPCs" instance=ExtResource( 18 )]
+
+[node name="NPC16" parent="NPCs" instance=ExtResource( 18 )]
+
+[node name="NPC17" parent="NPCs" instance=ExtResource( 18 )]
+
+[node name="NPC18" parent="NPCs" instance=ExtResource( 18 )]
+
+[node name="NPC19" parent="NPCs" instance=ExtResource( 18 )]
+
+[node name="NPC20" parent="NPCs" instance=ExtResource( 18 )]
+
+[node name="NPC21" parent="NPCs" instance=ExtResource( 18 )]
+
+[node name="WorldEvents" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="DialogManager" type="Node2D" parent="WorldEvents"]
+
+script/script = ExtResource( 19 )
+
+[node name="QuestManager" type="Node2D" parent="WorldEvents"]
+
+script/script = ExtResource( 20 )
+
+[node name="SceneChange" type="Node2D" parent="WorldEvents"]
+
+editor/display_folded = true
+visibility/visible = false
+script/script = ExtResource( 21 )
+
+[node name="ToCesferan" type="Area2D" parent="WorldEvents/SceneChange"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 9.17538, 0, 0, 25.2399, 54.0508, 2433.35 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldEvents/SceneChange/ToCesferan"]
+
+transform/pos = Vector2( 54.0508, 2433.35 )
+transform/scale = Vector2( 9.17538, 25.2399 )
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+
+[node name="AreaTrigger" type="Node2D" parent="WorldEvents"]
+
+[node name="Trap1" parent="WorldEvents/AreaTrigger" instance=ExtResource( 22 )]
+
+transform/pos = Vector2( 1264.3, 1937.76 )
+
+[node name="Trap2" parent="WorldEvents/AreaTrigger" instance=ExtResource( 22 )]
+
+transform/pos = Vector2( 825.083, 1662.14 )
+
+[node name="Trap3" parent="WorldEvents/AreaTrigger" instance=ExtResource( 22 )]
+
+transform/pos = Vector2( 1386.93, 1319.7 )
+
+[node name="Trap4" parent="WorldEvents/AreaTrigger" instance=ExtResource( 22 )]
+
+transform/pos = Vector2( 734.859, 1188.46 )
+
+[node name="Trap5" parent="WorldEvents/AreaTrigger" instance=ExtResource( 22 )]
+
+transform/pos = Vector2( 1274.15, 876.777 )
+
+[node name="NavigationSurfaces" type="Node2D" parent="."]
+
+editor/display_folded = true
+visibility/visible = false
+
+[node name="PlayerNavigation" type="Navigation2D" parent="NavigationSurfaces"]
+
+script/script = ExtResource( 23 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="NavigationSurfaces/PlayerNavigation"]
+
+transform/rot = 0.4
+navpoly = SubResource( 5 )
+enabled = true
+
+[node name="UIAndCameraNavigation" type="Navigation2D" parent="NavigationSurfaces"]
+
+editor/display_folded = true
+visibility/visible = false
+script/script = ExtResource( 24 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="NavigationSurfaces/UIAndCameraNavigation"]
+
+visibility/visible = false
+transform/rot = 0.4
+navpoly = SubResource( 5 )
+enabled = true
+
+[node name="PlayerAndUI" parent="." instance=ExtResource( 25 )]
+
+[node name="Helper" type="Sprite" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( 2098.7, 190.784 )
+texture = ExtResource( 26 )
+
+[connection signal="timeout" from="Sounds/WorldSounds/TimedSounds/ThunderRumbling/Timer" to="." method="_on_ThunderRumblig_Timer_timeout"]
+
+[connection signal="timeout" from="Sounds/WorldSounds/TimedSounds/Thunder/Timer" to="." method="_on_Thunder_Timer_timeout"]
+
+[connection signal="finished" from="Sounds/Music/Track1" to="Sounds" method="_Signal_StepMusicTrack"]
+
+[connection signal="finished" from="Sounds/Music/Track2" to="Sounds" method="_Signal_StepMusicTrack"]
+
+[connection signal="timeout" from="Lights/ThunderLights/Timer" to="." method="_on_ThunderLight_Timer_timeout"]
+
+[connection signal="body_enter" from="WorldEvents/SceneChange/ToCesferan" to="WorldEvents/SceneChange" method="_on_ToCesferan_body_enter"]
+
+[connection signal="body_exit" from="WorldEvents/SceneChange/ToCesferan" to="WorldEvents/SceneChange" method="_on_ToCesferan_body_exit"]
+
+

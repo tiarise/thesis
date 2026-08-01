@@ -1,0 +1,14 @@
+[I. The curse]
+
+StartType="AreaTrigger"
+
+CompletionType="Talk"
+CompleteNPC="Gywenne"
+CompleteKeyLine="Now I would like to see your magical capabilities!"
+
+Description="My powers are weakened. Also, I found a physical barrier."
+CompletionText="I managed to take my curse off."
+
+Priority="Secondary"
+RewardStatistics={ "Health" : 20 }
+RewardExperience=20

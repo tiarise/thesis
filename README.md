@@ -16,21 +16,7 @@ created a "bridge" between the two systems.
 I've added the [Binaries.7z](https://github.com/tiarise/thesis/blob/main/Binaries.7z) prebuilt for Windows and Linux.
 The game supports 800x600, 1366x768, 1920x1080 resolutions.
 
-## :camera_flash: Ingame pictures :camera_flash:
+## :camera_flash: Short Reel :camera_flash:
 
-#### Menu
-![](pictures/menu.png)
-#### Loading Screen
-![](pictures/loading.png)
-#### Ingame in the town
-![](pictures/townsquare.png)
-#### Map window
-![](pictures/map.png)
-#### Quest window
-![](pictures/journal.png)
-#### Attributes window
-![](pictures/attributes.png)
-#### Dialog window
-![](pictures/dialogsystem.png)
-#### Battle window
-![](pictures/battle.png)
+![](media/reel.gif)
+
